@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  db:
+    restart: always
+    build:
+      context: infra/db
+      dockerfile: Dockerfile
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - ./data:/var/lib/postgresql/data
+
+
+
+volumes:
+  data:
+
+networks:
+  default:
+    name: ${NETWORK_NAME}

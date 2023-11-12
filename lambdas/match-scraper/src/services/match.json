@@ -1,0 +1,1322 @@
+{
+  "metadata": {
+    "data_version": "5",
+    "match_id": "TR1_1467296989",
+    "participants": [
+      "TwPI7wZYKNbzNGNZF7JbrkIZkj6AOOn1Ed_gGCMt92i5rzyUjiwCrEupgzdJ_fGBKUynzKDYyFQDwg",
+      "Tk0-yxR6NYZTzj2tEjMdDVuAN5k7A3oM6BHzgqtU5ZOMAhX8M2yOxyHFAF0MagiMuDpMxtC4giJaJA",
+      "eCmYGDMPG7Xx6skv7-Fw6O5Yn7BtuI-cYs4jleYvVT8WRjXkb9B4ij8CfYOIccgLsgOOYl4YY2ok-Q",
+      "PEJMRLu_Z1lQy0nxDi89ByGLT_qgrLet_3qbT3tZhdA80hwhpFJaklgEgG_rfHXBsmylAY3BCrtLXA",
+      "f4J-w6AcFOyINdqKWPaGSldiQgG1pMZDRkVH0jGXfuysTf-F_4rXJOMU8vUnSGmVP4nEmbddIDvPDg",
+      "0GfQBpGXv6UQNLURvhvk8BCz3TlhL2mvY-GKbtTnMT4_8uUh80J6pBIN1QjE0lop_ts1CSG4WofF7g",
+      "NuAwdg5pc-t7Cee3EE2gl226G9AMaVlNKSVRgZr6yoEpy1Z-s3rWXVpLcE4MHbAv9MFDJrDJIXPHPQ",
+      "pU_1IGl-YsTXpQm9Q5gq0pKLX8xyq5Rxjt2KVJZoSCQWqmhaYrsm-EWAWD-IH4B5sz1H8GlCG3eU5A"
+    ]
+  },
+  "info": {
+    "game_datetime": 1699708907033,
+    "game_length": 2399.407470703125,
+    "game_version": "Version 13.22.541.9804 (Nov 08 2023/01:52:34) [PUBLIC] <Releases/13.22>",
+    "participants": [
+      {
+        "augments": [
+          "TFT9_Augment_RedBuff",
+          "TFT9_Augment_Commander_TeamingUp2"
+        ],
+        "companion": {
+          "content_ID": "9a06da41-9895-4b37-8e75-e9d50d2484c0",
+          "item_ID": 5022,
+          "skin_ID": 22,
+          "species": "PetMiniGolem"
+        },
+        "gold_left": 18,
+        "last_round": 28,
+        "level": 6,
+        "placement": 7,
+        "players_eliminated": 0,
+        "puuid": "TwPI7wZYKNbzNGNZF7JbrkIZkj6AOOn1Ed_gGCMt92i5rzyUjiwCrEupgzdJ_fGBKUynzKDYyFQDwg",
+        "time_eliminated": 1750.821533203125,
+        "total_damage_to_players": 38,
+        "traits": [
+          {
+            "name": "Set9_Bruiser",
+            "num_units": 5,
+            "style": 2,
+            "tier_current": 3,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_Freljord",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 2
+          },
+          {
+            "name": "Set9_Ixtal",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 3
+          },
+          {
+            "name": "Set9_Noxus",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_Piltover",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 2
+          },
+          {
+            "name": "Set9_Preserver",
+            "num_units": 2,
+            "style": 1,
+            "tier_current": 1,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_Shurima",
+            "num_units": 2,
+            "style": 1,
+            "tier_current": 1,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_Slayer",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 3
+          },
+          {
+            "name": "Set9_Void",
+            "num_units": 2,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 3
+          }
+        ],
+        "units": [
+          {
+            "character_id": "TFT9_Renekton",
+            "itemNames": [
+              "TFT_Item_Redemption",
+              "TFT_Item_SpectralGauntlet"
+            ],
+            "name": "Renekton",
+            "rarity": 0,
+            "tier": 3
+          },
+          {
+            "character_id": "TFT9_ChoGath",
+            "itemNames": [
+              "TFT_Item_Redemption",
+              "TFT_Item_BrambleVest",
+              "TFT_Item_DragonsClaw"
+            ],
+            "name": "",
+            "rarity": 0,
+            "tier": 3
+          },
+          {
+            "character_id": "TFT9_Milio",
+            "itemNames": [],
+            "name": "",
+            "rarity": 0,
+            "tier": 2
+          },
+          {
+            "character_id": "TFT9_Cassiopeia",
+            "itemNames": [
+              "TFT_Item_BlueBuff",
+              "TFT_Item_JeweledGauntlet",
+              "TFT_Item_MadredsBloodrazor"
+            ],
+            "name": "",
+            "rarity": 0,
+            "tier": 3
+          },
+          {
+            "character_id": "TFT9_Vi",
+            "itemNames": [
+              "TFT_Item_ForceOfNature",
+              "TFT_Item_RadiantVirtue"
+            ],
+            "name": "",
+            "rarity": 1,
+            "tier": 1
+          },
+          {
+            "character_id": "tft9_reksai",
+            "itemNames": [],
+            "name": "RekSai",
+            "rarity": 2,
+            "tier": 1
+          },
+          {
+            "character_id": "TFT9_Sejuani",
+            "itemNames": [],
+            "name": "",
+            "rarity": 4,
+            "tier": 1
+          }
+        ]
+      },
+      {
+        "augments": [
+          "TFT9_Augment_MarksmanTrait",
+          "TFT9_Augment_KnowledgeIsPower"
+        ],
+        "companion": {
+          "content_ID": "06da6495-55da-43c7-ba7d-a7114018eefc",
+          "item_ID": 3019,
+          "skin_ID": 19,
+          "species": "PetGrumpyLion"
+        },
+        "gold_left": 0,
+        "last_round": 33,
+        "level": 7,
+        "placement": 6,
+        "players_eliminated": 1,
+        "puuid": "Tk0-yxR6NYZTzj2tEjMdDVuAN5k7A3oM6BHzgqtU5ZOMAhX8M2yOxyHFAF0MagiMuDpMxtC4giJaJA",
+        "time_eliminated": 2053.64892578125,
+        "total_damage_to_players": 78,
+        "traits": [
+          {
+            "name": "Set9_Armorclad",
+            "num_units": 6,
+            "style": 3,
+            "tier_current": 3,
+            "tier_total": 3
+          },
+          {
+            "name": "Set9_Challenger",
+            "num_units": 2,
+            "style": 1,
+            "tier_current": 1,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_Ionia",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 3
+          },
+          {
+            "name": "Set9_Marksman",
+            "num_units": 2,
+            "style": 1,
+            "tier_current": 1,
+            "tier_total": 3
+          },
+          {
+            "name": "Set9_Noxus",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_Shurima",
+            "num_units": 2,
+            "style": 1,
+            "tier_current": 1,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_Slayer",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 3
+          },
+          {
+            "name": "Set9_Zaun",
+            "num_units": 2,
+            "style": 1,
+            "tier_current": 1,
+            "tier_total": 3
+          },
+          {
+            "name": "Set9b_Darkin",
+            "num_units": 2,
+            "style": 3,
+            "tier_current": 2,
+            "tier_total": 2
+          },
+          {
+            "name": "Set9b_Vanquisher",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 3
+          }
+        ],
+        "units": [
+          {
+            "character_id": "TFT9_Jinx",
+            "itemNames": [
+              "TFT_Item_InfinityEdge",
+              "TFT_Item_TitansResolve",
+              "TFT_Item_GuinsoosRageblade"
+            ],
+            "name": "",
+            "rarity": 1,
+            "tier": 3
+          },
+          {
+            "character_id": "TFT9_Warwick",
+            "itemNames": [
+              "TFT_Item_TitansResolve",
+              "TFT_Item_NightHarvester"
+            ],
+            "name": "",
+            "rarity": 1,
+            "tier": 3
+          },
+          {
+            "character_id": "TFT9_Naafiri",
+            "itemNames": [
+              "TFT9_Item_ArmorcladEmblem"
+            ],
+            "name": "",
+            "rarity": 1,
+            "tier": 2
+          },
+          {
+            "character_id": "TFT9_Sett",
+            "itemNames": [],
+            "name": "",
+            "rarity": 1,
+            "tier": 3
+          },
+          {
+            "character_id": "TFT9_Darius",
+            "itemNames": [],
+            "name": "",
+            "rarity": 2,
+            "tier": 2
+          },
+          {
+            "character_id": "TFT9_Nasus",
+            "itemNames": [
+              "TFT_Item_Redemption",
+              "TFT_Item_DragonsClaw"
+            ],
+            "name": "",
+            "rarity": 4,
+            "tier": 2
+          },
+          {
+            "character_id": "TFT9b_Aatrox",
+            "itemNames": [
+              "TFT_Item_MadredsBloodrazor",
+              "TFT_Item_Deathblade",
+              "TFT_Item_HextechGunblade"
+            ],
+            "name": "",
+            "rarity": 6,
+            "tier": 1
+          }
+        ]
+      },
+      {
+        "augments": [
+          "TFT9_Augment_Commander_Experience1",
+          "TFT9_Augment_Commander_RollingForDays2"
+        ],
+        "companion": {
+          "content_ID": "fc22bee0-0909-4dfd-bd58-886da22746cf",
+          "item_ID": 2014,
+          "skin_ID": 14,
+          "species": "PetGriffin"
+        },
+        "gold_left": 1,
+        "last_round": 34,
+        "level": 9,
+        "placement": 4,
+        "players_eliminated": 0,
+        "puuid": "eCmYGDMPG7Xx6skv7-Fw6O5Yn7BtuI-cYs4jleYvVT8WRjXkb9B4ij8CfYOIccgLsgOOYl4YY2ok-Q",
+        "time_eliminated": 2135.517333984375,
+        "total_damage_to_players": 109,
+        "traits": [
+          {
+            "name": "Set9_Armorclad",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 3
+          },
+          {
+            "name": "Set9_Bastion",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_Bruiser",
+            "num_units": 2,
+            "style": 1,
+            "tier_current": 1,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_Challenger",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_Empress",
+            "num_units": 1,
+            "style": 3,
+            "tier_current": 1,
+            "tier_total": 1
+          },
+          {
+            "name": "Set9_Noxus",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_Shurima",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_Slayer",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 3
+          },
+          {
+            "name": "Set9_Void",
+            "num_units": 3,
+            "style": 1,
+            "tier_current": 1,
+            "tier_total": 3
+          },
+          {
+            "name": "Set9_Zaun",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 3
+          },
+          {
+            "name": "Set9b_Darkin",
+            "num_units": 1,
+            "style": 1,
+            "tier_current": 1,
+            "tier_total": 2
+          }
+        ],
+        "units": [
+          {
+            "character_id": "TFT9_ChoGath",
+            "itemNames": [
+              "TFT_Item_RedBuff",
+              "TFT_Item_GargoyleStoneplate",
+              "TFT_Item_ChainVest"
+            ],
+            "name": "",
+            "rarity": 0,
+            "tier": 3
+          },
+          {
+            "character_id": "TFT9_KaiSa",
+            "itemNames": [
+              "TFT9_Item_ZaunEmblem"
+            ],
+            "name": "",
+            "rarity": 4,
+            "tier": 1
+          },
+          {
+            "character_id": "TFT9_Sion",
+            "itemNames": [],
+            "name": "",
+            "rarity": 6,
+            "tier": 1
+          },
+          {
+            "character_id": "TFT9_Sion",
+            "itemNames": [],
+            "name": "",
+            "rarity": 6,
+            "tier": 1
+          },
+          {
+            "character_id": "TFT9b_Aatrox",
+            "itemNames": [],
+            "name": "",
+            "rarity": 6,
+            "tier": 2
+          },
+          {
+            "character_id": "TFT9_KSante",
+            "itemNames": [],
+            "name": "",
+            "rarity": 6,
+            "tier": 1
+          },
+          {
+            "character_id": "TFT9_BelVeth",
+            "itemNames": [
+              "TFT_Item_Bloodthirster",
+              "TFT_Item_Bloodthirster",
+              "TFT_Item_LastWhisper"
+            ],
+            "name": "",
+            "rarity": 6,
+            "tier": 2
+          },
+          {
+            "character_id": "TFT9_BelVeth",
+            "itemNames": [],
+            "name": "",
+            "rarity": 6,
+            "tier": 1
+          }
+        ]
+      },
+      {
+        "augments": [
+          "TFT9_Augment_Harmacist1",
+          "TFT9_Augment_ItPaysToLearnII"
+        ],
+        "companion": {
+          "content_ID": "7e35d399-23c3-44fc-b9b1-f111bd021d19",
+          "item_ID": 25016,
+          "skin_ID": 16,
+          "species": "PetAoShin"
+        },
+        "gold_left": 6,
+        "last_round": 38,
+        "level": 8,
+        "placement": 1,
+        "players_eliminated": 4,
+        "puuid": "PEJMRLu_Z1lQy0nxDi89ByGLT_qgrLet_3qbT3tZhdA80hwhpFJaklgEgG_rfHXBsmylAY3BCrtLXA",
+        "time_eliminated": 2391.256591796875,
+        "total_damage_to_players": 253,
+        "traits": [
+          {
+            "name": "Set9_Bastion",
+            "num_units": 2,
+            "style": 1,
+            "tier_current": 1,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_Demacia",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_Ionia",
+            "num_units": 2,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 3
+          },
+          {
+            "name": "Set9_Ixtal",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 3
+          },
+          {
+            "name": "Set9_Marksman",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 3
+          },
+          {
+            "name": "Set9_Preserver",
+            "num_units": 6,
+            "style": 3,
+            "tier_current": 3,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_Rogue",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 2
+          },
+          {
+            "name": "Set9_Sorcerer",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_Targon",
+            "num_units": 3,
+            "style": 3,
+            "tier_current": 2,
+            "tier_total": 3
+          },
+          {
+            "name": "Set9_Wanderer",
+            "num_units": 1,
+            "style": 3,
+            "tier_current": 1,
+            "tier_total": 1
+          }
+        ],
+        "units": [
+          {
+            "character_id": "TFT9_Milio",
+            "itemNames": [],
+            "name": "",
+            "rarity": 0,
+            "tier": 2
+          },
+          {
+            "character_id": "TFT9_Galio",
+            "itemNames": [
+              "TFT_Item_RedBuff",
+              "TFT_Item_GargoyleStoneplate"
+            ],
+            "name": "",
+            "rarity": 1,
+            "tier": 2
+          },
+          {
+            "character_id": "TFT9_Soraka",
+            "itemNames": [],
+            "name": "Soraka",
+            "rarity": 1,
+            "tier": 2
+          },
+          {
+            "character_id": "TFT9_Karma",
+            "itemNames": [
+              "TFT_Item_HextechGunblade",
+              "TFT_Item_MadredsBloodrazor",
+              "TFT_Item_JeweledGauntlet"
+            ],
+            "name": "",
+            "rarity": 2,
+            "tier": 3
+          },
+          {
+            "character_id": "TFT9_Taric",
+            "itemNames": [
+              "TFT_Item_IonicSpark",
+              "TFT_Item_BrambleVest",
+              "TFT_Item_DragonsClaw"
+            ],
+            "name": "",
+            "rarity": 2,
+            "tier": 3
+          },
+          {
+            "character_id": "TFT9_Shen",
+            "itemNames": [
+              "TFT9_Item_RogueEmblem",
+              "TFT_Item_SteraksGage",
+              "TFT_Item_FrozenHeart"
+            ],
+            "name": "",
+            "rarity": 4,
+            "tier": 3
+          },
+          {
+            "character_id": "TFT9_Aphelios",
+            "itemNames": [],
+            "name": "",
+            "rarity": 4,
+            "tier": 2
+          },
+          {
+            "character_id": "TFT9_RyzeShurima",
+            "itemNames": [
+              "TFT_Item_UnstableConcoction",
+              "TFT_Item_Morellonomicon",
+              "TFT_Item_IonicSpark"
+            ],
+            "name": "",
+            "rarity": 6,
+            "tier": 2
+          }
+        ]
+      },
+      {
+        "augments": [
+          "TFT9_Augment_BruiserTrait",
+          "TFT9_Augment_Martyr"
+        ],
+        "companion": {
+          "content_ID": "e0507bcc-0679-4ffb-a2cc-9eb29a6b7b8d",
+          "item_ID": 12003,
+          "skin_ID": 3,
+          "species": "PetSGShisa"
+        },
+        "gold_left": 0,
+        "last_round": 38,
+        "level": 8,
+        "placement": 2,
+        "players_eliminated": 2,
+        "puuid": "f4J-w6AcFOyINdqKWPaGSldiQgG1pMZDRkVH0jGXfuysTf-F_4rXJOMU8vUnSGmVP4nEmbddIDvPDg",
+        "time_eliminated": 2391.256591796875,
+        "total_damage_to_players": 104,
+        "traits": [
+          {
+            "name": "Set9_Armorclad",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 3
+          },
+          {
+            "name": "Set9_Bruiser",
+            "num_units": 7,
+            "style": 3,
+            "tier_current": 4,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_Empress",
+            "num_units": 1,
+            "style": 3,
+            "tier_current": 1,
+            "tier_total": 1
+          },
+          {
+            "name": "Set9_Freljord",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 2
+          },
+          {
+            "name": "Set9_Noxus",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_Piltover",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 2
+          },
+          {
+            "name": "Set9_Shurima",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_Slayer",
+            "num_units": 2,
+            "style": 1,
+            "tier_current": 1,
+            "tier_total": 3
+          },
+          {
+            "name": "Set9_Void",
+            "num_units": 3,
+            "style": 1,
+            "tier_current": 1,
+            "tier_total": 3
+          },
+          {
+            "name": "Set9b_Darkin",
+            "num_units": 1,
+            "style": 1,
+            "tier_current": 1,
+            "tier_total": 2
+          }
+        ],
+        "units": [
+          {
+            "character_id": "TFT9_Renekton",
+            "itemNames": [],
+            "name": "Renekton",
+            "rarity": 0,
+            "tier": 2
+          },
+          {
+            "character_id": "TFT9_ChoGath",
+            "itemNames": [],
+            "name": "",
+            "rarity": 0,
+            "tier": 1
+          },
+          {
+            "character_id": "TFT9_Vi",
+            "itemNames": [
+              "TFT_Item_DragonsClaw"
+            ],
+            "name": "",
+            "rarity": 1,
+            "tier": 2
+          },
+          {
+            "character_id": "tft9_reksai",
+            "itemNames": [
+              "TFT_Item_TitansResolve",
+              "TFT_Item_Bloodthirster",
+              "TFT_Item_SteraksGage"
+            ],
+            "name": "RekSai",
+            "rarity": 2,
+            "tier": 3
+          },
+          {
+            "character_id": "TFT9_Sejuani",
+            "itemNames": [
+              "TFT_Item_Redemption",
+              "TFT_Item_DragonsClaw",
+              "TFT_Item_BrambleVest"
+            ],
+            "name": "",
+            "rarity": 4,
+            "tier": 2
+          },
+          {
+            "character_id": "TFT9_Sion",
+            "itemNames": [
+              "TFT_Item_Redemption",
+              "TFT_Item_DragonsClaw",
+              "TFT_Item_SpectralGauntlet"
+            ],
+            "name": "",
+            "rarity": 6,
+            "tier": 1
+          },
+          {
+            "character_id": "TFT9b_Aatrox",
+            "itemNames": [],
+            "name": "",
+            "rarity": 6,
+            "tier": 1
+          },
+          {
+            "character_id": "TFT9_BelVeth",
+            "itemNames": [],
+            "name": "",
+            "rarity": 6,
+            "tier": 1
+          }
+        ]
+      },
+      {
+        "augments": [
+          "TFT7_Augment_LategameSpecialist",
+          "TFT9_Augment_BilgewaterRisingInfamy3"
+        ],
+        "companion": {
+          "content_ID": "c6b7ad51-918e-4328-982e-034136dfe893",
+          "item_ID": 27,
+          "skin_ID": 27,
+          "species": "PetTFTAvatar"
+        },
+        "gold_left": 9,
+        "last_round": 33,
+        "level": 8,
+        "placement": 5,
+        "players_eliminated": 0,
+        "puuid": "0GfQBpGXv6UQNLURvhvk8BCz3TlhL2mvY-GKbtTnMT4_8uUh80J6pBIN1QjE0lop_ts1CSG4WofF7g",
+        "time_eliminated": 2027.6949462890625,
+        "total_damage_to_players": 67,
+        "traits": [
+          {
+            "name": "Set9_Armorclad",
+            "num_units": 2,
+            "style": 1,
+            "tier_current": 1,
+            "tier_total": 3
+          },
+          {
+            "name": "Set9_Marksman",
+            "num_units": 2,
+            "style": 1,
+            "tier_current": 1,
+            "tier_total": 3
+          },
+          {
+            "name": "Set9_Multicaster",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 3
+          },
+          {
+            "name": "Set9_Noxus",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_Preserver",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_ReaverKing",
+            "num_units": 1,
+            "style": 3,
+            "tier_current": 1,
+            "tier_total": 1
+          },
+          {
+            "name": "Set9_Rogue",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 2
+          },
+          {
+            "name": "Set9_Strategist",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_Wanderer",
+            "num_units": 1,
+            "style": 3,
+            "tier_current": 1,
+            "tier_total": 1
+          },
+          {
+            "name": "Set9b_Bilgewater",
+            "num_units": 7,
+            "style": 3,
+            "tier_current": 3,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9b_Vanquisher",
+            "num_units": 2,
+            "style": 1,
+            "tier_current": 1,
+            "tier_total": 3
+          }
+        ],
+        "units": [
+          {
+            "character_id": "TFT9_Graves",
+            "itemNames": [],
+            "name": "",
+            "rarity": 0,
+            "tier": 2
+          },
+          {
+            "character_id": "TFT9_TwistedFate",
+            "itemNames": [],
+            "name": "",
+            "rarity": 1,
+            "tier": 2
+          },
+          {
+            "character_id": "TFT9_MissFortune",
+            "itemNames": [
+              "TFT_Item_JeweledGauntlet"
+            ],
+            "name": "",
+            "rarity": 2,
+            "tier": 3
+          },
+          {
+            "character_id": "TFT9_Darius",
+            "itemNames": [
+              "TFT9_Item_BilgewaterEmblem"
+            ],
+            "name": "",
+            "rarity": 2,
+            "tier": 2
+          },
+          {
+            "character_id": "TFT9_Nautilus",
+            "itemNames": [
+              "TFT_Item_GargoyleStoneplate",
+              "TFT_Item_DragonsClaw",
+              "TFT_Item_RedBuff"
+            ],
+            "name": "",
+            "rarity": 2,
+            "tier": 3
+          },
+          {
+            "character_id": "TFT9_Nilah",
+            "itemNames": [
+              "TFT_Item_RapidFireCannon",
+              "TFT_Item_MadredsBloodrazor",
+              "TFT_Item_InfinityEdge"
+            ],
+            "name": "",
+            "rarity": 4,
+            "tier": 2
+          },
+          {
+            "character_id": "TFT9_RyzeShurima",
+            "itemNames": [
+              "TFT_Item_Bloodthirster",
+              "TFT_Item_StatikkShiv"
+            ],
+            "name": "",
+            "rarity": 6,
+            "tier": 2
+          },
+          {
+            "character_id": "TFT9_Gangplank",
+            "itemNames": [],
+            "name": "",
+            "rarity": 6,
+            "tier": 1
+          }
+        ]
+      },
+      {
+        "augments": [
+          "TFT9_Augment_CyberneticLeech1",
+          "TFT6_Augment_PortableForgePlusPlus"
+        ],
+        "companion": {
+          "content_ID": "3422ad41-bd41-4e7c-a9fe-068b0c80e730",
+          "item_ID": 71018,
+          "skin_ID": 18,
+          "species": "PetSmolKnifeDog"
+        },
+        "gold_left": 17,
+        "last_round": 24,
+        "level": 7,
+        "placement": 8,
+        "players_eliminated": 0,
+        "puuid": "NuAwdg5pc-t7Cee3EE2gl226G9AMaVlNKSVRgZr6yoEpy1Z-s3rWXVpLcE4MHbAv9MFDJrDJIXPHPQ",
+        "time_eliminated": 1480.5303955078125,
+        "total_damage_to_players": 32,
+        "traits": [
+          {
+            "name": "Set9_Armorclad",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 3
+          },
+          {
+            "name": "Set9_Bruiser",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_Challenger",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_Noxus",
+            "num_units": 7,
+            "style": 3,
+            "tier_current": 3,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_Preserver",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_Rogue",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 2
+          },
+          {
+            "name": "Set9_Shurima",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_Slayer",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 3
+          },
+          {
+            "name": "Set9_Sorcerer",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_Strategist",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9b_Vanquisher",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 3
+          }
+        ],
+        "units": [
+          {
+            "character_id": "TFT9_Samira",
+            "itemNames": [],
+            "name": "",
+            "rarity": 0,
+            "tier": 2
+          },
+          {
+            "character_id": "TFT9_Cassiopeia",
+            "itemNames": [],
+            "name": "",
+            "rarity": 0,
+            "tier": 2
+          },
+          {
+            "character_id": "TFT9_Swain",
+            "itemNames": [
+              "TFT_Item_RedBuff"
+            ],
+            "name": "",
+            "rarity": 1,
+            "tier": 3
+          },
+          {
+            "character_id": "TFT9_Katarina",
+            "itemNames": [],
+            "name": "",
+            "rarity": 2,
+            "tier": 1
+          },
+          {
+            "character_id": "TFT9_Darius",
+            "itemNames": [],
+            "name": "",
+            "rarity": 2,
+            "tier": 2
+          },
+          {
+            "character_id": "TFT9_Mordekaiser",
+            "itemNames": [
+              "TFT_Item_GuinsoosRageblade",
+              "TFT_Item_RapidFireCannon"
+            ],
+            "name": "",
+            "rarity": 4,
+            "tier": 2
+          },
+          {
+            "character_id": "TFT9_Sion",
+            "itemNames": [
+              "TFT4_Item_OrnnEternalWinter",
+              "TFT_Item_FrozenHeart"
+            ],
+            "name": "",
+            "rarity": 6,
+            "tier": 1
+          }
+        ]
+      },
+      {
+        "augments": [
+          "TFT9_Augment_StarsAreBorn",
+          "TFT9_Augment_TinyGrabBag",
+          "TFT9_Augment_YouHaveMySword"
+        ],
+        "companion": {
+          "content_ID": "229ec11f-ab85-45ed-92b2-b2101770f4aa",
+          "item_ID": 71015,
+          "skin_ID": 15,
+          "species": "PetSmolKnifeDog"
+        },
+        "gold_left": 1,
+        "last_round": 37,
+        "level": 8,
+        "placement": 3,
+        "players_eliminated": 0,
+        "puuid": "pU_1IGl-YsTXpQm9Q5gq0pKLX8xyq5Rxjt2KVJZoSCQWqmhaYrsm-EWAWD-IH4B5sz1H8GlCG3eU5A",
+        "time_eliminated": 2299.17431640625,
+        "total_damage_to_players": 122,
+        "traits": [
+          {
+            "name": "Set9_Bastion",
+            "num_units": 2,
+            "style": 1,
+            "tier_current": 1,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_Challenger",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_Demacia",
+            "num_units": 7,
+            "style": 3,
+            "tier_current": 3,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_Multicaster",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 3
+          },
+          {
+            "name": "Set9_Preserver",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_Shurima",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 4
+          },
+          {
+            "name": "Set9_Slayer",
+            "num_units": 2,
+            "style": 1,
+            "tier_current": 1,
+            "tier_total": 3
+          },
+          {
+            "name": "Set9_Strategist",
+            "num_units": 1,
+            "style": 0,
+            "tier_current": 0,
+            "tier_total": 4
+          }
+        ],
+        "units": [
+          {
+            "character_id": "TFT9_Poppy",
+            "itemNames": [
+              "TFT_Item_GargoyleStoneplate",
+              "TFT_Item_Redemption"
+            ],
+            "name": "",
+            "rarity": 0,
+            "tier": 3
+          },
+          {
+            "character_id": "TFT9_Kayle",
+            "itemNames": [
+              "TFT_Item_GuinsoosRageblade",
+              "TFT_Item_GuinsoosRageblade",
+              "TFT_Item_StatikkShiv"
+            ],
+            "name": "",
+            "rarity": 0,
+            "tier": 3
+          },
+          {
+            "character_id": "TFT9_Galio",
+            "itemNames": [],
+            "name": "",
+            "rarity": 1,
+            "tier": 2
+          },
+          {
+            "character_id": "TFT9_Quinn",
+            "itemNames": [
+              "TFT_Item_ThiefsGloves",
+              "TFT_Item_Bloodthirster",
+              "TFT_Item_HextechGunblade"
+            ],
+            "name": "",
+            "rarity": 2,
+            "tier": 2
+          },
+          {
+            "character_id": "TFT9_Sona",
+            "itemNames": [],
+            "name": "",
+            "rarity": 2,
+            "tier": 2
+          },
+          {
+            "character_id": "TFT9_Fiora",
+            "itemNames": [
+              "TFT_Item_Bloodthirster",
+              "TFT_Item_InfinityEdge"
+            ],
+            "name": "",
+            "rarity": 4,
+            "tier": 2
+          },
+          {
+            "character_id": "TFT9_JarvanIV",
+            "itemNames": [
+              "TFT_Item_RedBuff",
+              "TFT_Item_WarmogsArmor"
+            ],
+            "name": "",
+            "rarity": 4,
+            "tier": 2
+          },
+          {
+            "character_id": "TFT9_KSante",
+            "itemNames": [
+              "TFT_Item_SteraksGage"
+            ],
+            "name": "",
+            "rarity": 6,
+            "tier": 1
+          }
+        ]
+      }
+    ],
+    "queue_id": 1100,
+    "tft_game_type": "standard",
+    "tft_set_core_name": "TFTSet9_2",
+    "tft_set_number": 9
+  }
+}

@@ -1,0 +1,27 @@
+-- First iteration
+Start from ovuruska
+Start iteration over matches
+    Check if match is in DB
+    if match is in DB
+        CONTINUE
+    else
+        Add all participants to the DB ( if not exist )
+        BEGIN TRANSACTION
+            Add all compositions to the DB ( if not exist )
+            Add match to the DB.
+        COMMIT TRANSACTION
+
+
+-- Second iteration
+Start from random player
+Start iteration over matches
+    Check if match is in DB
+    if match is in DB
+        CONTINUE
+    else
+        Lambda match-scraper
+            Add all participants to the DB ( if not exist )
+            BEGIN TRANSACTION
+                Add all compositions to the DB ( if not exist )
+                Add match to the DB.
+            COMMIT TRANSACTION
