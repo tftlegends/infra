@@ -32,6 +32,18 @@ class TftMatchRepository {
   }
   async insertMatch(match,transaction) {
     const client = transaction || await this.postgres.connect();
+
+    /*
+    CREATE TABLE IF NOT EXISTS TftMatches (
+    matchId VARCHAR(20) PRIMARY KEY NOT NULL,
+    participants VARCHAR(78)[] NOT NULL,
+    tftSet TEXT NOT NULL,
+    gameLength INT NOT NULL,
+    gameType TEXT NOT NULL,
+    metadata JSONB NOT NULL
+);
+
+     */
     const insertMatchQuery = 'INSERT INTO TftMatches (matchId, participants, tftSet, gameLength, gameType, metadata) VALUES ($1, $2, $3, $4, $5, $6)';
     const insertMatchValues = [match.matchId, match.participants, match.tftSet, parseInt(match.gameLength.toString()), match.gameType, match.metadata];
     await client.query(insertMatchQuery, insertMatchValues);
@@ -52,9 +64,21 @@ class TftMatchRepository {
     return rows.length > 0;
   }
 
+  async checkMatchExists(matchId) {
+    const query = `SELECT * FROM TftMatches WHERE matchId = '${matchId}'`;
+    const { rows } = await this.postgres.query(query);
+    return rows.length > 0;
+  }
+
   async createUser(puuid, summonerName) {
     const query = `INSERT INTO TftUsers (puuid, summonerName) VALUES ('${puuid}', '${summonerName}')`;
     await this.postgres.query(query);
+  }
+
+  async getRandomUser(){
+    const query = `SELECT * FROM TftUsers ORDER BY RANDOM() LIMIT 1`;
+    const { rows } = await this.postgres.query(query);
+    return rows[0];
   }
 }
 

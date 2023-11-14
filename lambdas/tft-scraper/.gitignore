@@ -1,9 +1,0 @@
-node_modules
-players
-.idea
-
-*.png
-**/*.png
-
-.DS_Store
-

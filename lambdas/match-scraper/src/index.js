@@ -1,10 +1,13 @@
 const TftLegendsMatchService = require('./services/match');
 const TftMatchRepository = require('./repositories/tft-match');
+const TftLegendsSummonerService = require('./services/summoner');
 const {config} = require('dotenv')
 const allTraits = require('./domain/enums/traits')
+const SpecialEventLogic = require("./logics/special-event");
 config();
 
-const matchService = new TftLegendsMatchService(process.env.RIOT_API_KEY, process.env.RIOT_REGION);
+const matchService = new TftLegendsMatchService(process.env.RIOT_API_KEY, process.env.MATCH_SERVICE_REGION);
+const summonerService = new TftLegendsSummonerService(process.env.RIOT_API_KEY, process.env.SUMMONER_SERVICE_REGION);
 const tftMatchRepository = new TftMatchRepository({
   port : process.env.POSTGRES_PORT,
   host : process.env.POSTGRES_HOST,
@@ -12,9 +15,9 @@ const tftMatchRepository = new TftMatchRepository({
   password : process.env.POSTGRES_PASSWORD,
   database : process.env.POSTGRES_DATABASE,
 });
-const main = async (matchId) => {
 
 
+const addMatch = async (matchId) => {
   const match = await matchService.fetchMatch(matchId);
   const {metadata, info} = match;
   const {participants: playerComps} = info;
@@ -57,10 +60,9 @@ const main = async (matchId) => {
         const puuid = composition.puuid;
         const userExists = await tftMatchRepository.checkUserExists(puuid);
         if(!userExists){
-          const user = await matchService.fetchUser(puuid);
-          const {summonerName} = user;
-          await tftMatchRepository.createUser(puuid,summonerName)
+          await tftMatchRepository.createUser(puuid,undefined);
         }
+        SpecialEventLogic.filterSpecialEvent(matchId,composition.composition.units);
         await tftMatchRepository.insertComposition(composition,transaction);
       })
     ]);
@@ -71,9 +73,65 @@ const main = async (matchId) => {
   await tftMatchRepository.commitTransaction(transaction);
 
 
+}
+
+const main = async () => {
+  let start = 0;
+  let count = 20;
+  let totalMatchesUploaded = 0;
+  try{
+
+
+  const randomUser = await tftMatchRepository.getRandomUser();
+  const {puuid:userPuuid,summonerName} = randomUser;
+  console.log(`Starting to download matches for ${summonerName} (${userPuuid})`);
+
+  const isAllMatchesDownloaded = false;
+  while(!isAllMatchesDownloaded) {
+    const matchIds = await matchService.getMatchIdsByPuuid(userPuuid, start, count);
+    const availableMatches = [];
+
+    for (let i = 0; i < matchIds.length; i++) {
+      const matchId = matchIds[i];
+      const matchExists = await tftMatchRepository.checkMatchExists(matchId);
+      // Checks if all matches are downloaded.
+      // If not, it will proceed to download the match.
+      if (matchExists) {
+        availableMatches.push(true);
+      } else {
+        try{
+          await addMatch(matchId).catch(console.error);
+          totalMatchesUploaded++;
+          availableMatches.push(false);
+        }catch(e){
+          availableMatches.push(true);
+          console.log(`${matchId} is not added. Error: ${e.message}`)
+
+        }
+      }
+
+      if (matchIds.length === count) {
+        // If every match has been downloaded, we don't need to continue.
+        if(availableMatches.every((matchId) => matchId === true)){
+          break;
+        }else{
+          start += count;
+        }
+      } else {
+        break;
+      }
+
+    }
+  }
+  }catch(e){
+    console.error(e);
+  }finally {
+    console.log("Total matches uploaded: " + totalMatchesUploaded);
+    console.log("Total matches skipped: " + (start - totalMatchesUploaded));
+    console.log("Total matches: " + start);
+  }
 
 
 }
 
-const matchId = 'TR1_1467296989'
-main(matchId)
+main();
