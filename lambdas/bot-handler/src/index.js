@@ -12,21 +12,21 @@ const bot = new TelegramBot(token, {polling: true});
 
 const handleMessage = async (message) => {
 	const command = message.text;
-	if(command.includes('anlat')) {
-		await AnlatCommand.run(message, bot);
-	}else if(command.includes('guclu')){
-		const command = new GucluCommand()
-		await command.run(message, bot);
+	try{
+			const gucluCommand = new GucluCommand()
+			await gucluCommand.run(message, bot, command);
+	}catch (e) {
+		console.error(e);
+		await bot.sendMessage(message.chat.id, "Wiz waz wuz");
+
 	}
-	else {
-		await DefaultCommand.run(message, bot);
-	}
+
 
 }
 
 
 bot.on('message', handleMessage);
-
+console.info('Agam ben başladım.')
 
 
 

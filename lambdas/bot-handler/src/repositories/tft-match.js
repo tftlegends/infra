@@ -106,7 +106,7 @@ class TftMatchRepository {
 					LIMIT ${k}
 				
 				`;
-		const result = await client.query(query).then(res => res).catch(err => console.log(err));
+		const result = await client.query(query)
 		const rows = result.rows;
 		await client.end();
 		return rows;

@@ -77,8 +77,7 @@ const traitsTr = {
 const numberOfTraits = Object.keys(traits).length;
 class GucluCommand{
 
-	async run (msg, bot) {
-		const content = msg.text;
+	async run (msg, bot, command) {
 		const matchService = new TftLegendsMatchService(process.env.RIOT_API_KEY, process.env.MATCH_SERVICE_REGION);
 		const summonerService = new TftLegendsSummonerService(process.env.RIOT_API_KEY, process.env.SUMMONER_SERVICE_REGION);
 		const tftMatchRepository = new TftMatchRepository({
@@ -88,8 +87,7 @@ class GucluCommand{
 			password : process.env.POSTGRES_PASSWORD,
 			database : process.env.POSTGRES_DATABASE,
 		});
-		const splittedContent = content.split(' ');
-		const traitContent = splittedContent.slice(1);
+		const traitContent = command.split(' ');
 		const traitContentLength = traitContent.length;
 		const traitVector = new Array(numberOfTraits).fill(0);
 		for(let i = 0; i < traitContentLength;i++){
@@ -149,7 +147,7 @@ class GucluCommand{
 				const itemUtility = Object.keys(items).reduce((acc,curr) => {
 					return acc + items[curr];
 				},0);
-				return itemUtility * occurence * level*(rarity+1);
+				return itemUtility * occurence * level;
 			};
 			return heroUtility(b) - heroUtility(a);
 		}).slice(0,3);
@@ -166,23 +164,24 @@ class GucluCommand{
 			return augmentSelections[b] - augmentSelections[a];
 		}).slice(0,3);
 		const message = `<========================>
-Kardeşim senin alman gereken 3 tane karakter var.
-Birincisinin adı ${mostImportant3Characters[0]}
-Bu herife ${mostImportant3ItemsOfMostImportantCharacters[0]} itemleri vermen lazım.
+Merhaba! Sizin için seçtiğim üç önemli karakter bulunmaktadır.
+İlk karakterimiz: ${mostImportant3Characters[0]}
+Bu karakter için önerilen eşyalar: ${mostImportant3ItemsOfMostImportantCharacters[0]}
 
-İkincisinin adı ${mostImportant3Characters[1]}
-Bu yaratığa ${mostImportant3ItemsOfMostImportantCharacters[1]} itemleri vermen lazım.
+İkinci karakterimiz: ${mostImportant3Characters[1]}
+Bu karakter için önerilen eşyalar: ${mostImportant3ItemsOfMostImportantCharacters[1]}
 
-Üçüncüsünün adı ${mostImportant3Characters[2]}
-Bu azmana ${mostImportant3ItemsOfMostImportantCharacters[2]} itemleri vermen lazım.
+Üçüncü karakterimiz: ${mostImportant3Characters[2]}
+Bu karakter için önerilen eşyalar: ${mostImportant3ItemsOfMostImportantCharacters[2]}
 
-Bu arada benim bilgim dahilinde en iyi 3 augment şunlar:
-1- ${mostImportant3Augments[0]}
-2- ${mostImportant3Augments[1]}
-3- ${mostImportant3Augments[2]}
+Ayrıca, sizin için belirlediğim en iyi üç augment şunlardır:
+1. ${mostImportant3Augments[0]}
+2. ${mostImportant3Augments[1]}
+3. ${mostImportant3Augments[2]}
 
-Hadi eyvallah aslanım.
-<========================>`;
+İyi şanslar dilerim!
+<========================>
+`;
 			const chatId = msg.chat.id;
 
 			await bot.sendMessage(chatId, message);
