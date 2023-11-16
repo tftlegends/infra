@@ -8,14 +8,7 @@ export default class EnvironmentProvider {
       return process.env[variableName];
     } else {
       const parameter = await EnvironmentProvider.ssm.getParameter({ Name: variableName, WithDecryption: true }).promise()
-      if (parameter.Parameter?.Type === 'StringList' && parameter.Parameter.Value) {
-        const listValue = parameter.Parameter.Value.split(',')
-        console.log(`${variableName} with type ${parameter.Parameter?.Type} has value ${listValue}`);
-        return listValue;
-      } else {
-        console.log(`${variableName} with type ${parameter.Parameter?.Type} has value ${parameter.Parameter?.Value}`)
-        return parameter.Parameter?.Value || ''
-      }
+      return parameter.Parameter?.Type === 'StringList' && parameter.Parameter.Value ? parameter.Parameter.Value.split(',') : parameter.Parameter?.Value || '';
 
     }
   }
