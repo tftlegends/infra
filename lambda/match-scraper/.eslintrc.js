@@ -30,10 +30,6 @@ module.exports = {
 			{
 				"selector": "class",
 				"format": ["PascalCase"],
-			},
-			{
-				"selector": "variable",
-				"format": ["camelCase"],
 			}
 		],
 
@@ -49,7 +45,8 @@ module.exports = {
 		],
 		'unicorn/no-null': 'off',
 		"no-var": "error",
-		"prefer-const": 'off'
-
+		"prefer-const": 'off',
+		"sonarjs/cognitive-complexity": "off",
+		"@typescript-eslint/no-unused-vars": "off",
 	}
 };
