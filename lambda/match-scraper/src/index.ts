@@ -82,7 +82,7 @@ const main = async () => {
     throw new Error("No TFT entry found");
   }
   const fallbackTier = tftEntry.tier;
-
+  console.info("Fetching matches for " + tftEntry.summonerName + " " + tftEntry.tier + " " + tftEntry.rank + " " + tftEntry.leaguePoints + "LP");
   const {
     puuid
   } = tftEntry;

@@ -48,5 +48,6 @@ module.exports = {
 		"prefer-const": 'off',
 		"sonarjs/cognitive-complexity": "off",
 		"@typescript-eslint/no-unused-vars": "off",
+		"unicorn/no-static-only-class": "off",
 	}
 };
