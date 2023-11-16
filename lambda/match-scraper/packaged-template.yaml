@@ -1,0 +1,79 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: TFT Legends Match Scraper Lambda
+Parameters:
+  CreateBucket:
+    Description: Whether to create the S3 bucket
+    Type: String
+    Default: 'Yes'
+    AllowedValues:
+    - 'Yes'
+    - 'No'
+  CreateTrigger:
+    Description: Whether to create the trigger
+    Type: String
+    Default: 'Yes'
+    AllowedValues:
+    - 'Yes'
+    - 'No'
+Conditions:
+  ShouldCreateBucket:
+    Fn::Equals:
+    - Ref: CreateBucket
+    - 'No'
+  ShouldCreateTrigger:
+    Fn::Equals:
+    - Ref: CreateTrigger
+    - 'Yes'
+Resources:
+  TFTLegendsMatchScraperFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: dist/main.handler
+      Runtime: nodejs18.x
+      Description: Fetches TFT matches from Riot API.
+      MemorySize: 256
+      Timeout: 20
+      CodeUri: s3://tft-legends-match-scraper-package/66f716a704ac106b0363b4d1a61a4e6f
+      Policies:
+      - Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Action:
+          - ssm:GetParameter
+          Resource:
+          - Fn::Sub: arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/COMMON*
+          - Fn::Sub: arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/TFTLEGENDS_MATCH_SCRAPER*
+  TFTLegendsMatchScraperBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    Condition: ShouldCreateBucket
+    Properties:
+      BucketName: tft-legends-match-scraper-package
+  TFTLegendsMatchScraperTrigger:
+    Type: AWS::Events::Rule
+    Condition: ShouldCreateTrigger
+    DeletionPolicy: Delete
+    Properties:
+      Description: Trigger for TFT Legends Match Scraper
+      ScheduleExpression: rate(2 hours)
+      State: ENABLED
+      Targets:
+      - Arn:
+          Fn::GetAtt:
+          - TFTLegendsMatchScraperFunction
+          - Arn
+        Id: TFTLegendsMatchScraperFunction
+  9GagScraperInvokePermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName:
+        Fn::GetAtt:
+        - TFTLegendsMatchScraperFunction
+        - Arn
+      Principal: events.amazonaws.com
+      SourceArn:
+        Fn::GetAtt:
+        - TFTLegendsMatchScraperFunction
+        - Arn

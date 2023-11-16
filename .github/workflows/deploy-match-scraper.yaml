@@ -1,0 +1,47 @@
+name: TFT Match Scraper Lambda
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'lambda/match-scraper/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'lambda/match-scraper/**'
+
+concurrency:
+  group: tft-match-scraper-CG
+  cancel-in-progress: true
+
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_DEFAULT_REGION: ${{ secrets.AWS_REGION }}
+  WORKING_DIRECTORY: 'lambda/match-scraper'
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: npm ci
+
+      - name: Test
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: npm run test:ci
+
+      - name: Deploy
+        working-directory: ${{ env.WORKING_DIRECTORY }}
+        run: npm run deploy:e2e
