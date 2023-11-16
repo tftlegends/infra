@@ -2,7 +2,7 @@ const path = require('node:path');
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-	entry: './src/index.ts',
+	entry: './src/main.ts',
 	mode: 'production',
 	target: 'node',
 	module: {
@@ -15,7 +15,7 @@ module.exports = {
 		]
 	},
 	resolve: {
-		extensions: ['.tsx', '.ts', '.js'],
+		extensions: ['.ts', '.js'],
 		alias: {
 			'@': path.resolve(__dirname, 'src'),
 			'@test': path.resolve(__dirname, 'test')

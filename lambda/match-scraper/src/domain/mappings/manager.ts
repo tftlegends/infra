@@ -9,6 +9,12 @@ export class MappingManager {
   };
   protected rootPath: string;
   protected errorMessage = "Mapping not initialized";
+  protected indexMapper: { [key: string]: {
+    [key: string]: number
+    } } = {};
+  protected nameMapper: { [key: string]: {
+    [key: string]: string
+    } } = {};
 
   constructor(version: string) {
     this.version = version;
@@ -19,13 +25,13 @@ export class MappingManager {
 
       if(MappingManager.versionMapping.hasOwnProperty(this.version)) {
         const versionName = MappingManager.versionMapping[this.version];
-        this.nameMapping = await import(`${this.rootPath}/names/${versionName}`).then((module) => module.default);
-        this.indexMapping = await import(`${this.rootPath}/indices/${versionName}`).then((module) => module.default);
+        this.nameMapping = this.nameMapper[versionName]!;
+        this.indexMapping = this.indexMapper[versionName]!;
       }else{
         console.warn(`Enum with version ${this.version} not found, fallback to default enum.`);
         const versionName = MappingManager.versionMapping["default"];
-        this.nameMapping = await import(`${this.rootPath}/names/${versionName}`).then((module) => module.default);
-        this.indexMapping = await import(`${this.rootPath}/indices/${versionName}`).then((module) => module.default);
+        this.nameMapping = this.nameMapper[versionName]!;
+        this.indexMapping = this.indexMapper[versionName]!;
     }
   }
   convertStringToIndex(input: string): number {
