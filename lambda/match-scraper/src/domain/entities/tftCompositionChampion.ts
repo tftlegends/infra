@@ -9,7 +9,7 @@
  * @property {string} tftSet
  * @example
  * {
- *  "summonerPuuid": "dvCWqP7xDqJB2b6_Q-TlUAVtT8d3SaLKrc96IhXcNvVbpGfycO-ttNcte3T7CW58gxWyv1qH1D3vDA",
+ *  "summonerpuuid": "dvCWqP7xDqJB2b6_Q-TlUAVtT8d3SaLKrc96IhXcNvVbpGfycO-ttNcte3T7CW58gxWyv1qH1D3vDA",
  *  "matchId": "TR_4400000000",
  *  "championName": "TFT4_Aatrox",
  *  "summonerTier": "MASTER",
@@ -23,11 +23,11 @@
  * }
  */
 export default interface TftCompositionChampionEntity {
-  summonerPuuid: string;
-  matchId: string;
-  championName: string;
-  summonerTier: string;
-  championItems: string[];
+  summonerpuuid: string;
+  matchid: string;
+  championname: string;
+  summonertier: string;
   placement: number;
-  tftSet: string;
+  championtier: number;
+  tftset: string;
 }

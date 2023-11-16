@@ -69,5 +69,7 @@ export default {
   "TFT9_TwistedFate": 67,
   "TFT9b_Aatrox": 68,
   "TFT9_RyzeBilgewater": 69,
-  "TFT9_RyzeIxtal": 70
+  "TFT9_RyzeIxtal": 70,
+  "TFT9_THex": 71,
+  "TFT9_HeimerdingerTurret": 72,
 };

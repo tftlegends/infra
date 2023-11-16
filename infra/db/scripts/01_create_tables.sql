@@ -1,8 +1,8 @@
 CREATE TABLE IF NOT EXISTS TftSummoners
 (
     summonerPuuid VARCHAR(78) PRIMARY KEY NOT NULL,
-    summonerName  VARCHAR(16)             NOT NULL,
-    summonerId    VARCHAR(58)             NOT NULL
+    summonerName  TEXT                    NOT NULL,
+    summonerId    VARCHAR(63)             NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS TftMatches
@@ -38,8 +38,8 @@ CREATE TABLE IF NOT EXISTS TftCompositionChampions
     matchId       VARCHAR(20) NOT NULL,
     championName  TEXT        NOT NULL,
     summonerTier  TEXT        NOT NULL,
-    championItems TEXT[]      NOT NULL,
     placement     INT         NOT NULL,
+    championTier  INT         NOT NULL,
     tftSet        TEXT        NOT NULL,
     FOREIGN KEY (summonerPuuid) REFERENCES TftSummoners (summonerPuuid) ON DELETE CASCADE,
     FOREIGN KEY (matchId) REFERENCES TftMatches (matchId) ON DELETE CASCADE,
@@ -68,6 +68,20 @@ CREATE TABLE IF NOT EXISTS TftCompositionAugments
     summonerTier  TEXT        NOT NULL,
     placement     INT         NOT NULL,
     tftSet        TEXT        NOT NULL,
+    FOREIGN KEY (summonerPuuid) REFERENCES TftSummoners (summonerPuuid) ON DELETE CASCADE,
+    FOREIGN KEY (matchId) REFERENCES TftMatches (matchId) ON DELETE CASCADE,
+    FOREIGN KEY (summonerPuuid, matchId) REFERENCES TftCompositions (summonerPuuid, matchId) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS TftCompositionItems
+(
+    summonerPuuid VARCHAR(78) NOT NULL,
+    matchId       VARCHAR(20) NOT NULL,
+    itemName      TEXT        NOT NULL,
+    summonerTier  TEXT        NOT NULL,
+    placement     INT         NOT NULL,
+    tftSet        TEXT        NOT NULL,
+    championName  TEXT        NOT NULL,
     FOREIGN KEY (summonerPuuid) REFERENCES TftSummoners (summonerPuuid) ON DELETE CASCADE,
     FOREIGN KEY (matchId) REFERENCES TftMatches (matchId) ON DELETE CASCADE,
     FOREIGN KEY (summonerPuuid, matchId) REFERENCES TftCompositions (summonerPuuid, matchId) ON DELETE CASCADE

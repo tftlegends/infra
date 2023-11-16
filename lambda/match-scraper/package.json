@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:js": "npx ts-node src/index.ts",
+    "start": "npx ts-node -r tsconfig-paths/register src/index.ts",
     "lint": "eslint . --ext .ts",
     "build": "webpack",
     "validate": "aws cloudformation validate-template --template-body file://template.yaml",
@@ -16,7 +16,7 @@
     "test:ci": "npm run lint &&npm run test -- --coverage --coverageReporters=text-lcov | coveralls",
     "test": "jest --verbose",
     "test:watch": "jest --watch",
-    "misc": "npx ts-node -r tsconfig-paths/register src/misc.ts\n"
+    "misc": "npx ts-node -r tsconfig-paths/register src/misc.ts"
   },
   "author": "",
   "license": "ISC",

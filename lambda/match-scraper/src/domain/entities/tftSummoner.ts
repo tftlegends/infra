@@ -11,7 +11,7 @@
  *  }
  */
 export default interface TftSummonerEntity {
-  summonerPuuid: string;
-  summonerName: string;
-  summonerId: string;
+  summonerpuuid: string;
+  summonername: string;
+  summonerid: string;
 }

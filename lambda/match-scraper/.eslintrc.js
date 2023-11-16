@@ -48,5 +48,8 @@ module.exports = {
 			"always"
 		],
 		'unicorn/no-null': 'off',
+		"no-var": "error",
+		"prefer-const": 'off'
+
 	}
 };

@@ -4,9 +4,9 @@ describe('ItemsMappingManager', () => {
   let traitsMappingManager: ItemsMappingManager;
   const setVersion = "TFTSet9_2";
   const invalidName = "TFT9NoItemLikeThat"
-  const validName = "TFT_Item_Bloodthirster"
-  const validId = 2;
-  const validViewName = "Bloodthirster"
+  const validName = "TFT9_Item_SorcererEmblem"
+  const validId = 140;
+  const validViewName = "Sorcerer Emblem"
 
   beforeAll(async () => {
     traitsMappingManager = new ItemsMappingManager(setVersion);

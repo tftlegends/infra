@@ -24,13 +24,13 @@
  */
 
 export default interface TftCompositionEntity {
-  summonerPuuid: string;
-  matchId: string;
+  summonerpuuid: string;
+  matchid: string;
   composition: object;
-  compVector: number[];
-  playerLevel: number;
+  compvector: number[];
+  playerlevel: number;
   placement: number;
-  totalDamageToPlayers: number;
-  tftSet: string;
-  summonerTier: string;
+  totaldamagetoplayers: number;
+  tftset: string;
+  summonertier: string;
 }

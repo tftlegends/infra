@@ -1,7 +1,8 @@
 import TftSummonerEntity from "@/domain/entities/tftSummoner";
 import Repository from "@/common/repository";
+import { PoolClient } from "pg";
 
-export default class TftSummonerRepository extends Repository {
+export default class TftSummonersRepository extends Repository {
 
   constructor() {
     super();
@@ -21,14 +22,14 @@ export default class TftSummonerRepository extends Repository {
 
   }
 
-  async createSummoner(summoner: TftSummonerEntity): Promise<TftSummonerEntity> {
-    const client = await this.pool.getClient();
+  async insertSummoner(summoner: TftSummonerEntity, transaction? : PoolClient): Promise<TftSummonerEntity> {
+    const client = transaction || await this.pool.getClient();
     const query = {
       text: 'INSERT INTO TftSummoners(summonerPuuid, summonerName, summonerId) VALUES($1, $2, $3) RETURNING *',
-      values: [summoner.summonerPuuid, summoner.summonerName, summoner.summonerId]
+      values: [summoner.summonerpuuid, summoner.summonername, summoner.summonerid]
     };
     const result = await client.query(query);
-    client.release();
+    if(!transaction) client.release();
     return result.rows[0] as TftSummonerEntity;
   }
 
@@ -51,6 +52,20 @@ export default class TftSummonerRepository extends Repository {
     const query = {
       text: 'SELECT * FROM TftSummoners WHERE summonerId = $1',
       values: [summonerId]
+    };
+    const result = await client.query(query);
+    client.release();
+    if(result.rows.length === 0) {
+      return null;
+    }
+    return result.rows[0] as TftSummonerEntity;
+  }
+
+  async getRandomSummoner(): Promise<TftSummonerEntity | null> {
+    const client = await this.pool.getClient();
+    const query = {
+      text: 'SELECT * FROM TftSummoners ORDER BY RANDOM() LIMIT 1',
+      values: []
     };
     const result = await client.query(query);
     client.release();

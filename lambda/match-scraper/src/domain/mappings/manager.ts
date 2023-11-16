@@ -8,6 +8,7 @@ export class MappingManager {
     "TFTSet9_2": "set92"
   };
   protected rootPath: string;
+  protected errorMessage = "Mapping not initialized";
 
   constructor(version: string) {
     this.version = version;
@@ -29,30 +30,30 @@ export class MappingManager {
   }
   convertStringToIndex(input: string): number {
     if(this.indexMapping === undefined){
-      throw new Error("Index mapping not initialized");
+      throw new Error(this.errorMessage);
     }
-    const result = this.indexMapping[input];
-    if(result === undefined){
+    const targetKey = Object.keys(this.indexMapping).find(key => key.toLowerCase().includes(input.toLowerCase()));
+    if(targetKey === undefined){
       throw new Error(`No index found for ${input}`);
     }
-    return result;
+    return this.indexMapping[targetKey];
 
   }
 
   convertStringToName(input: string): string {
     if(this.nameMapping === undefined){
-      throw new Error("Index mapping not initialized");
+      throw new Error(this.errorMessage);
     }
-    const result = this.nameMapping[input];
-    if(result === undefined){
+    const targetKey = Object.keys(this.nameMapping).find(key => key.toLowerCase().includes(input.toLowerCase()));
+    if(targetKey === undefined){
       throw new Error(`No name found for ${input}`);
     }
-    return result;
+    return this.nameMapping[targetKey];
   }
 
   get length(): number {
     if(this.nameMapping === undefined){
-      throw new Error("Index mapping not initialized");
+      throw new Error(this.errorMessage);
     }
     return Object.keys(this.nameMapping).length;
   }

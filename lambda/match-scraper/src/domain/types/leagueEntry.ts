@@ -1,47 +1,36 @@
 /**
  * @typedef {Object} LeagueEntry
- * @property {string} queueType
- * @property {string} summonerName
- * @property {boolean} hotStreak
- * @property {number} wins
- * @property {boolean} veteran
- * @property {number} losses
- * @property {string} rank
- * @property {string} leagueId
- * @property {boolean} inactive
- * @property {boolean} freshBlood
- * @property {string} tier
- * @property {string} summonerId
- * @property {number} leaguePoints
- * @example
  * {
- * "queueType": "RANKED_TFT",
- * "summonerName": "FındıkçıAdam",
- * "hotStreak": false,
- * "wins": 189,
- * "veteran": false,
- * "losses": 168,
- * "rank": "I",
- * "leagueId": "7b86dab2-5b83-3822-af78-7448ccb7e04c",
- * "inactive": false,
- * "freshBlood": false,
- * "tier": "MASTER",
- * "summonerId": "MygC8VcGMllCwe79NHHY5XEsMYV7eZmdkSJ8ytU_YOrEaY8lhbMmwfIPrQ",
- * "leaguePoints": 125
+ *   "puuid": "dvCWqP7xDqJB2b6_Q-TlUAVtT8d3SaLKrc96IhXcNvVbpGfycO-ttNcte3T7CW58gxWyv1qH1D3vDA",
+ *   "leagueId": "7b86dab2-5b83-3822-af78-7448ccb7e04c",
+ *   "queueType": "RANKED_TFT",
+ *   "tier": "MASTER",
+ *   "rank": "I",
+ *   "summonerId": "MygC8VcGMllCwe79NHHY5XEsMYV7eZmdkSJ8ytU_YOrEaY8lhbMmwfIPrQ",
+ *   "summonerName": "FındıkçıAdam",
+ *   "leaguePoints": 125,
+ *   "wins": 189,
+ *   "losses": 168,
+ *   "veteran": false,
+ *   "inactive": false,
+ *   "freshBlood": false,
+ *   "hotStreak": false
  * }
  */
+
 export interface LeagueEntry {
-  queueType: string;
-  summonerName: string;
-  hotStreak: boolean;
-  wins: number;
-  veteran: boolean;
-  losses: number;
-  rank: string;
+  puuid: string;
   leagueId: string;
+  queueType: string;
+  tier: string;
+  rank: string;
+  summonerId: string;
+  summonerName: string;
+  leaguePoints: number;
+  wins: number;
+  losses: number;
+  veteran: boolean;
   inactive: boolean;
   freshBlood: boolean;
-  tier: string;
-  summonerId: string;
-  leaguePoints: number;
+  hotStreak: boolean;
 }

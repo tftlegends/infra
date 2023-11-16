@@ -1,6 +1,6 @@
 import { config } from 'dotenv'
 config();
-import TftSummonerRepository from "./repositories/tftSummoners";
+import TftSummonersRepository from "./repositories/tftSummoners";
 import VectorDBPool from "./common/pool";
 
 VectorDBPool.getInstance({
@@ -14,7 +14,7 @@ VectorDBPool.getInstance({
   connectionTimeoutMillis: 2000,
 })
 
-const repo = new TftSummonerRepository();
+const repo = new TftSummonersRepository();
 
 
 const main = async () => {

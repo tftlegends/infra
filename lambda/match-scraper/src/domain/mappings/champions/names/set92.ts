@@ -69,6 +69,8 @@ export default {
   "TFT9_TwistedFate": "Twisted Fate",
   "TFT9b_Aatrox": "Aatrox",
   "TFT9_RyzeBilgewater": "Ryze",
-  "TFT9_RyzeIxtal": "Ryze"
+  "TFT9_RyzeIxtal": "Ryze",
+  "TFT9_THex": "T-Hex",
+  "TFT9_HeimerdingerTurret": "Heimerdinger",
 };
 

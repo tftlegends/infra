@@ -2,7 +2,7 @@ import { RiotAPI, RiotAPITypes } from "@fightmegg/riot-api";
 import TFTCluster = RiotAPITypes.TFTCluster;
 
 
-export default class TftLegendsMatchService {
+export default class RiotMatchService {
   private readonly rAPI: RiotAPI;
   private readonly region: string;
 
@@ -25,7 +25,7 @@ export default class TftLegendsMatchService {
     })
   }
 
-  async getMatchById(matchId : string) {
+  async getMatchDetailsByMatchId(matchId : string) {
     return await this.rAPI.tftMatch.getById({
       region: this.region as TFTCluster, matchId: matchId
     }) ;

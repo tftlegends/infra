@@ -1,26 +1,29 @@
 /**
- * @typedef {Object} TftCompositionAugmentEntity
+ * @typedef {Object} TftCompositionItemsEntity
  * @property {string} summonerPuuid
  * @property {string} matchId
- * @property {string} augmentName
+ * @property {string} itemName
  * @property {string} summonerTier
  * @property {number} placement
  * @property {string} tftSet
+ * @property {string} championName
  * @example
  * {
  *   "summonerPuuid": "dvCWqP7xDqJB2b6_Q-TlUAVtT8d3SaLKrc96IhXcNvVbpGfycO-ttNcte3T7CW58gxWyv1qH1D3vDA",
  *   "matchId": "TR_4400000000",
- *   "augmentName": "TFT4_Augment_CritChance",
+ *   "itemName": "TFT4_Spatula",
  *   "summonerTier": "MASTER",
  *   "placement": 1,
- *   "tftSet": "TFTSet9_2"
+ *   "tftSet": "TFTSet9_2",
+ *   "championName": "TFT4_Aatrox"
  * }
  */
-export default interface TftCompositionAugmentEntity {
+export default interface TftCompositionItemEntity {
   summonerpuuid: string;
   matchid: string;
-  augmentname: string;
+  itemname: string;
   summonertier: string;
   placement: number;
   tftset: string;
-}
+  championname: string;
+};

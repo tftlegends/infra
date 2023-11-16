@@ -26,10 +26,10 @@
  *  }
  */
 export default interface TftMatchEntity {
-  matchId: string;
+  matchid: string;
   participants: string[];
-  tftSet: string;
-  gameLength: number;
-  gameType: string;
+  tftset: string;
+  gamelength: number;
+  gametype: string;
   metadata: object;
 }

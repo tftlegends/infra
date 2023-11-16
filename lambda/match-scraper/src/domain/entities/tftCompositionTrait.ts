@@ -18,11 +18,11 @@
  */
 
 export default interface TftCompositionTraitEntity {
-  summonerPuuid: string;
-  matchId: string;
-  traitName: string;
-  traitTier: number;
+  summonerpuuid: string;
+  matchid: string;
+  traitname: string;
+  traittier: number;
   placement: number;
-  tftSet: string;
-  summonerTier: string;
+  tftset: string;
+  summonertier: string;
 }
