@@ -57,7 +57,7 @@ Resources:
     DeletionPolicy: Delete
     Properties:
       Description: Trigger for TFT Legends Match Scraper
-      ScheduleExpression: rate(2 hours)
+      ScheduleExpression: rate(1 hours)
       State: ENABLED
       Targets:
         - Arn: !GetAtt TFTLegendsMatchScraperFunction.Arn
