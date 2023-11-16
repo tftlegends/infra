@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('node:path');
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
@@ -15,7 +15,11 @@ module.exports = {
 		]
 	},
 	resolve: {
-		extensions: ['.tsx', '.ts', '.js']
+		extensions: ['.tsx', '.ts', '.js'],
+		alias: {
+			'@': path.resolve(__dirname, 'src'),
+			'@test': path.resolve(__dirname, 'test')
+		}
 	},
 	optimization: {
 		minimize: true,

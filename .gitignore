@@ -1,6 +1,7 @@
 .env
 
-node_modules
+**/node_modules
 data
-.idea
-.DS_Store
+**/.idea
+**/.DS_Store
+**/packaged-template.yaml
