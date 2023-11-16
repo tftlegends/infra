@@ -47,5 +47,6 @@ module.exports = {
 			"error",
 			"always"
 		],
+		'unicorn/no-null': 'off',
 	}
 };

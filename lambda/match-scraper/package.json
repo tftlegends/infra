@@ -15,7 +15,8 @@
     "deploy:e2e": "npm run validate && npm run build && npm run package && npm run deploy",
     "test:ci": "npm run lint &&npm run test -- --coverage --coverageReporters=text-lcov | coveralls",
     "test": "jest --verbose",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "misc": "npx ts-node -r tsconfig-paths/register src/misc.ts\n"
   },
   "author": "",
   "license": "ISC",
