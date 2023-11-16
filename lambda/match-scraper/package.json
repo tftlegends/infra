@@ -13,7 +13,7 @@
     "deploy": "aws cloudformation deploy --template-file packaged-template.yaml --stack-name TftLegendsMatchScraperStack --capabilities CAPABILITY_IAM CAPABILITY_AUTO_EXPAND",
     "delete": "aws cloudformation delete-stack --stack-name TftLegendsMatchScraperStack",
     "deploy:e2e": "npm run validate && npm run build && npm run package && npm run deploy",
-    "test:ci": "npm run lint &&npm run test -- --coverage --coverageReporters=text-lcov | coveralls",
+    "test:ci": "npm run lint &&npm run test -- --coverage --coverageReporters=text-lcov",
     "test": "jest --verbose",
     "test:watch": "jest --watch",
     "misc": "npx ts-node -r tsconfig-paths/register src/misc.ts"
