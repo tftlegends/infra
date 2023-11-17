@@ -1,5 +1,4 @@
 import { NestFactory } from '@nestjs/core';
-import serverlessExpress from '@vendia/serverless-express';
 import { Callback, Context, Handler } from 'aws-lambda';
 import { ValidationPipe } from '@nestjs/common';
 import { AppModule } from "@TftLegends/App/Module";
@@ -7,6 +6,8 @@ import SwaggerProvider from "@TftLegends/Providers/Swagger/SwaggerProvider";
 import { EnvironmentProvider } from "@TftLegends/Providers/Environment/EnvironmentProvider";
 import { Parameters } from "@TftLegends/Common/Enums/Parameters";
 import VectorDBPool from "@TftLegends/Common/Repositories/Pool";
+import { configure as serverlessExpress } from '@vendia/serverless-express';
+
 
 let server: Handler;
 

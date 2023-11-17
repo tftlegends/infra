@@ -9,8 +9,12 @@ export class AugmentsService {
     private readonly augmentsRepository: AugmentsRepository,
   ) {}
 
-  listTopAugments(statsRequest: BaseStatsRequest  ) {
+  listTopAugments(statsRequest: BaseStatsRequest) {
     return this.augmentsRepository.getBestAugmentsStats(statsRequest);
+  }
+
+  listWorstAugments(statsRequest: BaseStatsRequest) {
+    return this.augmentsRepository.getWorstAugmentsStats(statsRequest);
   }
 
 

@@ -20,7 +20,7 @@ export class BaseStatsRequest {
   @Min(1)
   @Max(100)
   @Transform(({ value }) => Number.parseInt(value))
-  limit : number = 10;
+  limit? : number = 10;
 
   @ApiPropertyOptional({
     description: 'The number of items to skip',
@@ -36,7 +36,7 @@ export class BaseStatsRequest {
   @Min(1)
   @Max(8)
   @Transform(({ value }) => Number.parseInt(value))
-  placement : number = 3;
+  placement? : number = 3;
 
   @ApiPropertyOptional({
     description: 'The set to query',
@@ -48,7 +48,7 @@ export class BaseStatsRequest {
   @IsString()
   @IsEnum(TftSet)
   @IsOptional()
-  tftSet : TftSet = TftSet.SET9_2;
+  tftSet? : TftSet = TftSet.SET9_2;
 
   @ApiPropertyOptional({
     description: 'One of the tiers to query',
@@ -60,6 +60,6 @@ export class BaseStatsRequest {
   @IsString()
   @IsEnum(TftTier)
   @IsOptional()
-  tftTier : TftTier = TftTier.DIAMOND
+  tftTier? : TftTier = TftTier.DIAMOND
 }
 
