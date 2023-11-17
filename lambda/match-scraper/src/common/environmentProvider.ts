@@ -1,11 +1,7 @@
 import { SSM } from "aws-sdk";
 
 export default class EnvironmentProvider {
-  static ssm = new SSM({
-    region: process.env.AWS_DEFAULT_REGION || 'us-east-1',
-    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  });
+  static ssm = new SSM();
 
   static async get(variableName: string) {
     if (process.env[variableName]) {
