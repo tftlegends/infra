@@ -24,7 +24,7 @@ Conditions:
   ShouldCreateTrigger: !Equals [ !Ref CreateTrigger, "Yes" ]
 
 Resources:
-  TFTLegendsMatchScraperFunction:
+  TFTLegendsMatchScraperLambda:
     Type: AWS::Serverless::Function
     Properties:
       Handler: dist/main.handler
@@ -60,17 +60,34 @@ Resources:
       ScheduleExpression: rate(30 minutes)
       State: ENABLED
       Targets:
-        - Arn: !GetAtt TFTLegendsMatchScraperFunction.Arn
-          Id: TFTLegendsMatchScraperFunction
+        - Arn: !GetAtt TFTLegendsMatchScraperLambda.Arn
+          Id: TFTLegendsMatchScraperLambda
 
 
   TFTLegendsMatchScraperInvokePermission:
     Type: AWS::Lambda::Permission
     Properties:
       Action: 'lambda:InvokeFunction'
-      FunctionName: !GetAtt TFTLegendsMatchScraperFunction.Arn
+      FunctionName: !GetAtt TFTLegendsMatchScraperLambda.Arn
       Principal: 'events.amazonaws.com'
-      SourceArn: !GetAtt TFTLegendsMatchScraperFunction.Arn
+      SourceArn: !GetAtt TFTLegendsMatchScraperLambda.Arn
+
+
+  TFTLegendsUsernameProcessorQueueEventSourceMapping:
+    Type: AWS::Lambda::EventSourceMapping
+    DependsOn: TFTLegendsMatchScraperLambda
+    Properties:
+      BatchSize: 1
+      Enabled: true
+      EventSourceArn: !Sub 'arn:aws:sqs:${AWS::Region}:${AWS::AccountId}:tft-legends-username-processing-queue'
+      FunctionName: !GetAtt TFTLegendsMatchScraperLambda.Arn
 
 
 
+  TFTLegendsUsernameProcessorQueuePermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: 'lambda:InvokeFunction'
+      FunctionName: !GetAtt TFTLegendsMatchScraperLambda.Arn
+      Principal: 'sqs.amazonaws.com'
+      SourceArn: !Sub 'arn:aws:sqs:${AWS::Region}:${AWS::AccountId}:tft-legends-username-processing-queue'

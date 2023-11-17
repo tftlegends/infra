@@ -187,5 +187,6 @@ export default {
   "TFT9_EmblemItems/TFT9_Item_BilgewaterEmblem": 185,
   "TFT9_EmblemItems/TFT9_Item_VanquisherEmblem": 186,
   "TFT9_EmblemItems/TFT9_Item_IxtalEmblem": 187,
-  "TFT9_Items/TFT9_HeimerUpgrade_RefractorBeam": 188
+  "TFT9_Items/TFT9_HeimerUpgrade_RefractorBeam": 188,
+  "TFT9_Item_OrnnDuskbladeOfDraktharr": 189,
 };

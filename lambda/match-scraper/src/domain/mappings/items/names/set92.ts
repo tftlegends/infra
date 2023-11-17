@@ -187,7 +187,8 @@ export default {
   "TFT9_EmblemItems/TFT9_Item_BilgewaterEmblem": "Bilgewater Emblem",
   "TFT9_EmblemItems/TFT9_Item_VanquisherEmblem": "Vanquisher Emblem",
   "TFT9_EmblemItems/TFT9_Item_IxtalEmblem": "Ixtal Emblem",
-  "TFT9_Items/TFT9_HeimerUpgrade_RefractorBeam": "Refractor Beam"
+  "TFT9_Items/TFT9_HeimerUpgrade_RefractorBeam": "Refractor Beam",
+  "TFT9_Item_OrnnDuskbladeOfDraktharr": "Duskblade of Draktharr",
 };
 
 

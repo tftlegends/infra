@@ -1,0 +1,27 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: TFT Legends Username Processor SQS Queue
+
+
+Resources:
+
+  TftLegendsUsernameProcessorQueue:
+    Type: AWS::SQS::Queue
+    Properties:
+      QueueName: tft-legends-username-processing-queue
+      VisibilityTimeout: 300
+      MessageRetentionPeriod: 1209600
+      DelaySeconds: 0
+      ReceiveMessageWaitTimeSeconds: 0
+
+Outputs:
+  MemeQueueUrl:
+    Description: The URL of the tft legends username processing SQS queue
+    Value:
+      Ref: TftLegendsUsernameProcessorQueue
+
+  MemeQueueArn:
+    Description: The ARN of the tft legends username processing SQS queue
+    Value:
+      Fn::GetAtt:
+        - TftLegendsUsernameProcessorQueue
+        - Arn
