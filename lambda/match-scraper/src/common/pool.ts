@@ -22,5 +22,8 @@ export default class VectorDBPool {
     return await this.pool.connect();
   }
 
+  public async end() {
+    await this.pool.end();
+  }
 }
 

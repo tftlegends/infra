@@ -2,24 +2,44 @@ import { config } from 'dotenv'
 config();
 import TftSummonersRepository from "./repositories/tftSummoners";
 import VectorDBPool from "./common/pool";
+import EnvironmentProvider from "@/common/environmentProvider";
+import { Parameters } from "@/domain/enums/parameters";
+import { Client } from "pg";
 
-VectorDBPool.getInstance({
-  host: process.env.POSTGRES_HOST!,
-  port: Number.parseInt(process.env.POSTGRES_PORT!),
-  user: process.env.POSTGRES_USER!,
-  password: process.env.POSTGRES_PASSWORD!,
-  database: process.env.POSTGRES_DB!,
-  max: 20,
-  idleTimeoutMillis: 30_000,
-  connectionTimeoutMillis: 2000,
-})
 
-const repo = new TftSummonersRepository();
 
 
 const main = async () => {
-  const summoner = await repo.getSummonerBySummonerName("Kiyoon");
-  console.log(summoner);
+  const [
+    postgreHost,
+    postgrePort,
+    postgreUser,
+    postgrePassword,
+    postgreDatabase,
+  ] = await Promise.all([
+    EnvironmentProvider.get(Parameters.POSTGRES_HOST),
+    EnvironmentProvider.get(Parameters.POSTGRES_PORT),
+    EnvironmentProvider.get(Parameters.POSTGRES_USER),
+    EnvironmentProvider.get(Parameters.POSTGRES_PASSWORD),
+    EnvironmentProvider.get(Parameters.POSTGRES_DB),
+  ]);
+
+
+  const client = new Client({
+    host: postgreHost as string,
+    port: Number.parseInt(postgrePort as string, 10),
+    user: postgreUser as string,
+    password: postgrePassword as string,
+    database: postgreDatabase as string,
+    ssl: {
+      rejectUnauthorized: false,
+    }
+  });
+
+  await client.connect();
+  const response = await client.query('SELECT * FROM TftSummoners');
+  console.log(response.rows);
+
 }
 
 main();

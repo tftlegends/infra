@@ -1,5 +1,4 @@
-import { config } from 'dotenv'
-config();
+
 import TftSummonersRepository from "./repositories/tftSummoners";
 import VectorDBPool from "./common/pool";
 import TftMatchesRepository from "@/repositories/tftMatches";
@@ -33,7 +32,7 @@ export const handler = async (event: object,context: object) => {
     matchServiceRegion,
     summonerServiceRegion,
     tftSetVersion,
-    username
+    username = "Fındıkçı Adam"
   ] = await Promise.all([
     EnvironmentProvider.get(Parameters.POSTGRES_HOST),
     EnvironmentProvider.get(Parameters.POSTGRES_PORT),
@@ -54,9 +53,10 @@ export const handler = async (event: object,context: object) => {
     user: postgreUser! as string,
     password: postgrePassword! as string,
     database: postgreDatabase! as string,
-    max: 20,
-    idleTimeoutMillis: 30_000,
-    connectionTimeoutMillis: 2000,
+    ssl: {
+      rejectUnauthorized: false,
+    },
+
   })
 
   const tftSummonersRepository = new TftSummonersRepository();
