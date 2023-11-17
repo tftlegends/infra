@@ -16,11 +16,10 @@ export default class EnvironmentProvider {
           Name: variableName,
           WithDecryption: true
         }).promise()
-        console.log(parameter);
         return parameter.Parameter?.Type === 'StringList' && parameter.Parameter.Value ? parameter.Parameter.Value.split(',') : parameter.Parameter?.Value || '';
 
       } catch {
-        console.warn(`Parameter with name ${variableName} not found in SSM`);
+        console.warn(`Error while fetching variable with name ${variableName} not found in SSM: ${process.env.AWS_DEFAULT_REGION}`);
         return '';
       }
 
