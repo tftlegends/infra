@@ -39,9 +39,11 @@ Resources:
             - Effect: Allow
               Action:
                 - ssm:GetParameter
+                - sqs:ReceiveMessage
               Resource:
                 - !Sub 'arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/COMMON*'
                 - !Sub 'arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/TFTLEGENDS_MATCH_SCRAPER*'
+                - !Sub 'arn:aws:sqs:${AWS::Region}:${AWS::AccountId}:tft-legends-username-processing-queue'
 
   TFTLegendsMatchScraperBucket:
     Type: AWS::S3::Bucket

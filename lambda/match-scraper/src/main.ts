@@ -22,17 +22,6 @@ import { SQSEvent } from "@/domain/types/sqsEvent";
 
 export const handler = async (event: SQSEvent | object,context: object) => {
 
-  if(event.hasOwnProperty("Records")) {
-    const records = (event as SQSEvent)["Records"];
-    for (const record of records) {
-      const body = record["body"];
-      const message = JSON.parse(body);
-      if (message.hasOwnProperty("username")) {
-        process.env[Parameters.TFT_USERNAME] = message["username"];
-      }
-    }
-  }
-
   const [
     postgreHost,
     postgrePort,
