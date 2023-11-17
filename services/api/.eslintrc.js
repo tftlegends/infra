@@ -36,7 +36,7 @@ module.exports = {
     "unicorn/filename-case": [
       "error",
       {
-        "case": "PascalCase"
+        "case": "pascalCase"
       }
     ],
     "object-curly-spacing": [
@@ -46,7 +46,6 @@ module.exports = {
     'unicorn/no-null': 'off',
     "no-var": "error",
     "prefer-const": 'off',
-    "sonarjs/cognitive-complexity": "off",
     "@typescript-eslint/no-unused-vars": "off",
     "unicorn/no-static-only-class": "off",
   }

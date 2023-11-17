@@ -2,26 +2,6 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: 'AWS::Serverless-2016-10-31'
 Description: TFT Legends Match Scraper Lambda
 
-Parameters:
-  CreateBucket:
-    Description: "Whether to create the S3 bucket"
-    Type: String
-    Default: "Yes"
-    AllowedValues:
-      - "Yes"
-      - "No"
-
-  CreateTrigger:
-    Description: "Whether to create the trigger"
-    Type: String
-    Default: "Yes"
-    AllowedValues:
-      - "Yes"
-      - "No"
-
-Conditions:
-  ShouldCreateBucket: !Equals [ !Ref CreateBucket, "No" ]
-  ShouldCreateTrigger: !Equals [ !Ref CreateTrigger, "Yes" ]
 
 Resources:
   TFTLegendsMatchScraperLambda:
@@ -48,17 +28,8 @@ Resources:
                 - !Sub 'arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/TFTLEGENDS_MATCH_SCRAPER*'
                 - !Sub 'arn:aws:sqs:${AWS::Region}:${AWS::AccountId}:tft-legends-username-processing-queue'
 
-  TFTLegendsMatchScraperBucket:
-    Type: AWS::S3::Bucket
-    DeletionPolicy: Retain
-    Condition: ShouldCreateBucket
-    Properties:
-      BucketName: tft-legends-match-scraper-package
-
-
   TFTLegendsMatchScraperTrigger:
     Type: AWS::Events::Rule
-    Condition: ShouldCreateTrigger
     DeletionPolicy: Delete
     Properties:
       Description: Trigger for TFT Legends Match Scraper
