@@ -1,4 +1,3 @@
-
 import TftSummonersRepository from "./repositories/tftSummoners";
 import VectorDBPool from "./common/pool";
 import TftMatchesRepository from "@/repositories/tftMatches";
@@ -19,8 +18,20 @@ import TraitsMappingManager from "@/domain/mappings/traits";
 import TftMatchEntity from "@/domain/entities/tftMatch";
 import EnvironmentProvider from "@/common/environmentProvider";
 import { Parameters } from "@/domain/enums/parameters";
+import { SQSEvent } from "@/domain/types/sqsEvent";
 
-export const handler = async (event: object,context: object) => {
+export const handler = async (event: SQSEvent | object,context: object) => {
+
+  if(event.hasOwnProperty("Records")) {
+    const records = (event as SQSEvent)["Records"];
+    for (const record of records) {
+      const body = record["body"];
+      const message = JSON.parse(body);
+      if (message.hasOwnProperty("username")) {
+        process.env[Parameters.TFT_USERNAME] = message["username"];
+      }
+    }
+  }
 
   const [
     postgreHost,

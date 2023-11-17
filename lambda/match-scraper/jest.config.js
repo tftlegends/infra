@@ -34,8 +34,7 @@ module.exports = {
 		"<rootDir>/node_modules/",
 	],
 	"moduleNameMapper": {
-		"@/(.*)": "<rootDir>/src/$1",
-		"@test/(.*)": "<rootDir>/test/$1"
+		"@/(.*)": "<rootDir>/src/$1"
 	}
 
 }

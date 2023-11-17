@@ -1,12 +1,9 @@
-import { handler } from "@/main";
-import { config } from 'dotenv'
-config();
-const sqsEvent = {
+{
   "Records": [
     {
       "messageId": "unique-message-id-1234",
       "receiptHandle": "receipt-handle-abc-123",
-      "body": "{\"username\": \"exampleUser\"}",
+      "body": "{\"username\": \"Fındıkçı Adam\"}",
       "attributes": {
         "ApproximateReceiveCount": "1",
         "SentTimestamp": "1588360698852",
@@ -20,5 +17,4 @@ const sqsEvent = {
       "awsRegion": "us-east-1"
     }
   ]
-};
-handler(sqsEvent,{});
+}
