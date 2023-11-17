@@ -40,6 +40,9 @@ Resources:
               Action:
                 - ssm:GetParameter
                 - sqs:ReceiveMessage
+                - sqs:DeleteMessage
+                - sqs:GetQueueAttributes
+                - sqs:ChangeMessageVisibility
               Resource:
                 - !Sub 'arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/COMMON*'
                 - !Sub 'arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/TFTLEGENDS_MATCH_SCRAPER*'

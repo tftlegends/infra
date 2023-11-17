@@ -30,5 +30,5 @@ module.exports = {
 		path: path.resolve(__dirname, 'dist'),
 		libraryTarget: 'commonjs2'
 	},
-	stats: 'verbose'
+	stats : 'summary'
 };

@@ -53,6 +53,7 @@ export const handler = async (event: SQSEvent | object,context: object) => {
     user: postgreUser! as string,
     password: postgrePassword! as string,
     database: postgreDatabase! as string,
+    // Prevents errors causing from RDS connection. RDS has obligation of using SSL.
     ssl: {
       rejectUnauthorized: false,
     },
