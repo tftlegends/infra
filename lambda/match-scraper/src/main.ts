@@ -32,7 +32,7 @@ export const handler = async (event: object,context: object) => {
     matchServiceRegion,
     summonerServiceRegion,
     tftSetVersion,
-    username = "Fındıkçı Adam"
+    username
   ] = await Promise.all([
     EnvironmentProvider.get(Parameters.POSTGRES_HOST),
     EnvironmentProvider.get(Parameters.POSTGRES_PORT),
