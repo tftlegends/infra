@@ -11,11 +11,15 @@ export default class EnvironmentProvider {
     if (process.env[variableName]) {
       return process.env[variableName];
     } else {
-      try{
-        const parameter = await EnvironmentProvider.ssm.getParameter({ Name: variableName, WithDecryption: true }).promise()
+      try {
+        const parameter = await EnvironmentProvider.ssm.getParameter({
+          Name: variableName,
+          WithDecryption: true
+        }).promise()
+        console.log(parameter);
         return parameter.Parameter?.Type === 'StringList' && parameter.Parameter.Value ? parameter.Parameter.Value.split(',') : parameter.Parameter?.Value || '';
 
-      }catch{
+      } catch {
         console.warn(`Parameter with name ${variableName} not found in SSM`);
         return '';
       }

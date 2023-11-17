@@ -264,19 +264,21 @@ export const handler = async (event: object,context: object) => {
                 };
                 await tftCompositionAugmentsRepository.insertAugment(augmentEntity, transaction);
                 }));
-
-          }
-
-
           }
           await transaction.query("COMMIT");
           console.info("Added match " + matchId);
+
+
+          }
+
 
         }
       catch (error) {
         console.error(error);
         await transaction.query("ROLLBACK");
-      }finally{}
+      }finally{
+        await transaction.release();
+      }
 
     }
 
