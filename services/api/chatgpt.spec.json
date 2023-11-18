@@ -1,0 +1,84 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "TFT Legends",
+    "version": "1.0.0",
+    "description": "API for retrieving the best and worst TFT augments."
+  },
+  "servers": [
+    {
+      "url": "https://r6rhano8oc.execute-api.us-east-1.amazonaws.com"
+    }
+  ],
+  "paths": {
+    "/Prod/meta/augments/worst": {
+      "get": {
+        "description": "Get worst augments in TFT",
+        "operationId": "GetWorstAugments",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of items to be retrieved",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/Prod/meta/items/by-champion-name": {
+      "get": {
+        "description": "Get best items for given champion",
+        "operationId": "GetBestItemsForChampion",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of items to be retrieved",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 10
+            }
+          },
+          {
+            "name": "championName",
+            "in": "query",
+            "description": "Name of the champion",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {}
+      }
+    },
+    "/Prod/meta/augments/top": {
+      "get": {
+        "description": "Get top augments in TFT",
+        "operationId": "GetBestAugments",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of items to be retrieved",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {}
+      }
+    }
+  },
+  "components": {
+    "schemas": {}
+  }
+}
