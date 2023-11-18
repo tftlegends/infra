@@ -5,14 +5,14 @@ import { MetaAugmentsService } from "@TftLegends/Meta/Services/Augments";
 import { BaseStatsRequest } from "@TftLegends/Common/Dto/Requests/BaseStatsRequest";
 
 @ApiTags('Meta/Augments')
-@Controller('/meta/augments')
+@Controller('meta/augments')
 export class MetaAugmentsController {
 
   constructor(
     private readonly metaAugmentsService: MetaAugmentsService,
   ) {}
 
-  @Get('/top')
+  @Get('top')
   @ApiQuery({ name: 'limit', type: Number, required: false })
   @ApiQuery({ name: 'placement', type: Number, required: false })
   @ApiQuery({ name: 'tftSet', type: String, required: false })
@@ -22,7 +22,7 @@ export class MetaAugmentsController {
     return this.metaAugmentsService.listTopAugments(stats);
   }
 
-  @Get('/worst')
+  @Get('worst')
   @ApiQuery({ name: 'limit', type: Number, required: false })
   @ApiQuery({ name: 'placement', type: Number, required: false })
   @ApiQuery({ name: 'tftSet', type: String, required: false })

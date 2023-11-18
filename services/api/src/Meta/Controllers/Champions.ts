@@ -4,7 +4,7 @@ import TftCompositionAugmentEntity from "@TftLegends/Common/Entities/TftComposit
 import { BaseStatsRequest } from "@TftLegends/Common/Dto/Requests/BaseStatsRequest";
 import { MetaChampionsService } from "@TftLegends/Meta/Services/Champions";
 
-@Controller('/meta/champions')
+@Controller('meta/champions')
 @ApiTags('Meta/Champions')
 export class MetaChampionsController {
 
@@ -12,7 +12,7 @@ export class MetaChampionsController {
       private readonly metaChampionsService: MetaChampionsService,
     ) {}
 
-    @Get('/top')
+    @Get('top')
     @ApiQuery({ name: 'limit', type: Number, required: false })
     @ApiQuery({ name: 'placement', type: Number, required: false })
     @ApiQuery({ name: 'tftSet', type: String, required: false })
@@ -22,7 +22,7 @@ export class MetaChampionsController {
         return this.metaChampionsService.listTopChampions(stats);
     }
 
-    @Get('/worst')
+    @Get('worst')
     @ApiQuery({ name: 'limit', type: Number, required: false })
     @ApiQuery({ name: 'placement', type: Number, required: false })
     @ApiQuery({ name: 'tftSet', type: String, required: false })
