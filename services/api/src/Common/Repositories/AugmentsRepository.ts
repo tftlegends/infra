@@ -2,6 +2,7 @@ import { PoolClient } from "pg";
 import Repository from "@TftLegends/Common/Repositories/Repository";
 import TftCompositionAugmentEntity from "@TftLegends/Common/Entities/TftCompositionAugment";
 import { BaseStatsRequest } from "@TftLegends/Common/Dto/Requests/BaseStatsRequest";
+import { DefaultValue } from "@TftLegends/Common/Contants/DefaultValue";
 
 export class AugmentsRepository extends Repository {
   constructor() {
@@ -31,7 +32,7 @@ export class AugmentsRepository extends Repository {
   }
 
   async getBestAugmentsStats(statsRequest: BaseStatsRequest) {
-    const { limit, placement, tftSet, tftTier } = statsRequest;
+    const { limit = DefaultValue.LIMIT, placement = DefaultValue.LIMIT, tftSet = DefaultValue.TFT_SET, tftTier = DefaultValue.TFT_TIER } = statsRequest;
     const client = await this.pool.getClient();
     const query = {
       text: 'SELECT augmentName, COUNT(augmentName) FROM TftCompositionAugments WHERE placement <= $1 AND tftSet = $2 AND summonerTier = $3 GROUP BY augmentName ORDER BY COUNT(augmentName) DESC LIMIT $4',
@@ -45,7 +46,7 @@ export class AugmentsRepository extends Repository {
   }
 
   async getWorstAugmentsStats(statsRequest: BaseStatsRequest){
-    const { limit, placement, tftSet, tftTier } = statsRequest;
+    const { limit = DefaultValue.LIMIT, placement = DefaultValue.LIMIT, tftSet = DefaultValue.TFT_SET, tftTier = DefaultValue.TFT_TIER } = statsRequest;
     const client = await this.pool.getClient();
     const query = {
       text: 'SELECT augmentName, COUNT(augmentName) FROM TftCompositionAugments WHERE placement >= $1 AND tftSet = $2 AND summonerTier = $3 GROUP BY augmentName ORDER BY COUNT(augmentName) ASC LIMIT $4',
