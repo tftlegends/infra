@@ -1,15 +1,15 @@
 import { Controller, Get, Param, Query } from "@nestjs/common";
 import { ApiOkResponse, ApiQuery, ApiTags, PartialType } from "@nestjs/swagger";
 import TftCompositionAugmentEntity from "@TftLegends/Common/Entities/TftCompositionAugment";
-import { AugmentsService } from "@TftLegends/Meta/Services/Augments";
+import { MetaAugmentsService } from "@TftLegends/Meta/Services/Augments";
 import { BaseStatsRequest } from "@TftLegends/Common/Dto/Requests/BaseStatsRequest";
 
 @ApiTags('Meta/Augments')
 @Controller('/meta/augments')
-export class AugmentsController {
+export class MetaAugmentsController {
 
   constructor(
-    private readonly augmentsRepository: AugmentsService,
+    private readonly metaAugmentsService: MetaAugmentsService,
   ) {}
 
   @Get('/top')
@@ -19,9 +19,7 @@ export class AugmentsController {
   @ApiQuery({ name: 'tftTier', type: String, required: false })
   @ApiOkResponse({ type: [PartialType(TftCompositionAugmentEntity)] })
   async getTopAugments(@Query() stats: BaseStatsRequest) {
-    // TODO: Remove this after testing
-    console.info('stats', stats);
-    return this.augmentsRepository.listTopAugments(stats);
+    return this.metaAugmentsService.listTopAugments(stats);
   }
 
   @Get('/worst')
@@ -31,9 +29,7 @@ export class AugmentsController {
   @ApiQuery({ name: 'tftTier', type: String, required: false })
   @ApiOkResponse({ type: [PartialType(TftCompositionAugmentEntity)] })
   async getWorstAugments(@Query() stats: BaseStatsRequest) {
-    // TODO: Remove this after testing
-    console.info('stats', stats);
-    return this.augmentsRepository.listWorstAugments(stats);
+    return this.metaAugmentsService.listWorstAugments(stats);
   }
 
 

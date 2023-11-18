@@ -3,7 +3,7 @@ import { AugmentsRepository } from "@TftLegends/Common/Repositories/AugmentsRepo
 import { BaseStatsRequest } from "@TftLegends/Common/Dto/Requests/BaseStatsRequest";
 
 @Injectable()
-export class AugmentsService {
+export class MetaAugmentsService {
 
   constructor(
     private readonly augmentsRepository: AugmentsRepository,

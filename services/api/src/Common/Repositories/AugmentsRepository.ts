@@ -2,8 +2,10 @@ import { PoolClient } from "pg";
 import Repository from "@TftLegends/Common/Repositories/Repository";
 import TftCompositionAugmentEntity from "@TftLegends/Common/Entities/TftCompositionAugment";
 import { BaseStatsRequest } from "@TftLegends/Common/Dto/Requests/BaseStatsRequest";
-import { DefaultValue } from "@TftLegends/Common/Contants/DefaultValue";
+import { DefaultValue } from "@TftLegends/Common/Constants/DefaultValue";
+import { Injectable } from "@nestjs/common";
 
+@Injectable()
 export class AugmentsRepository extends Repository {
   constructor() {
     super();
@@ -34,13 +36,26 @@ export class AugmentsRepository extends Repository {
   async getBestAugmentsStats(statsRequest: BaseStatsRequest) {
     const { limit = DefaultValue.LIMIT, placement = DefaultValue.LIMIT, tftSet = DefaultValue.TFT_SET, tftTier = DefaultValue.TFT_TIER } = statsRequest;
     const client = await this.pool.getClient();
-    const query = {
-      text: 'SELECT augmentName, COUNT(augmentName) FROM TftCompositionAugments WHERE placement <= $1 AND tftSet = $2 AND summonerTier = $3 GROUP BY augmentName ORDER BY COUNT(augmentName) DESC LIMIT $4',
-      values: [placement, tftSet, tftTier, limit]
-    }
-    console.info('query', query);
+    const query = `
+        SELECT
+    augmentName,
+    COUNT(*) AS totalGames,
+    SUM(CASE WHEN placement = 1 THEN 1 ELSE 0 END) AS wins,
+    SUM(CASE WHEN placement <= 4 THEN 1 ELSE 0 END) AS topFour,
+    ROUND(CAST(SUM(CASE WHEN placement = 1 THEN 1 ELSE 0 END) AS DECIMAL) / NULLIF(COUNT(*), 0), 2) AS winProbability,
+    ROUND(CAST(SUM(CASE WHEN placement <= 4 THEN 1 ELSE 0 END) AS DECIMAL) / NULLIF(COUNT(*), 0), 2) AS topFourProbability
+FROM
+    TftCompositionAugments
+WHERE
+    tftSet = '${tftSet}' AND summonerTier = '${tftTier}'
+GROUP BY
+    augmentName
+ORDER BY
+    winProbability DESC, topFourProbability DESC
+LIMIT ${limit}
+    `
+
     const response = await client.query(query);
-    console.info('response', response);
     client.release();
     return response.rows as TftCompositionAugmentEntity[];
   }
@@ -48,15 +63,28 @@ export class AugmentsRepository extends Repository {
   async getWorstAugmentsStats(statsRequest: BaseStatsRequest){
     const { limit = DefaultValue.LIMIT, placement = DefaultValue.LIMIT, tftSet = DefaultValue.TFT_SET, tftTier = DefaultValue.TFT_TIER } = statsRequest;
     const client = await this.pool.getClient();
-    const query = {
-      text: 'SELECT augmentName, COUNT(augmentName) FROM TftCompositionAugments WHERE placement >= $1 AND tftSet = $2 AND summonerTier = $3 GROUP BY augmentName ORDER BY COUNT(augmentName) ASC LIMIT $4',
-      values: [placement, tftSet, tftTier, limit]
-    }
-    // TODO: Remove this after testing
-    console.info('query', query);
+
+    const query = `
+    SELECT
+    augmentName,
+    COUNT(*) AS totalGames,
+    SUM(CASE WHEN placement = 1 THEN 1 ELSE 0 END) AS wins,
+    SUM(CASE WHEN placement <= 4 THEN 1 ELSE 0 END) AS topFour,
+    ROUND(CAST(SUM(CASE WHEN placement = 1 THEN 1 ELSE 0 END) AS DECIMAL) / NULLIF(COUNT(*), 0), 2) AS winProbability,
+    ROUND(CAST(SUM(CASE WHEN placement <= 4 THEN 1 ELSE 0 END) AS DECIMAL) / NULLIF(COUNT(*), 0), 2) AS topFourProbability
+FROM
+    TftCompositionAugments
+WHERE
+    tftSet = '${tftSet}' AND summonerTier = '${tftTier}'
+GROUP BY
+    augmentName
+ORDER BY
+    winProbability ASC, topFourProbability ASC
+LIMIT ${limit}
+ 
+    `;
+
     const response = await client.query(query);
-    // TODO: Remove this after testing
-    console.info('response', response);
     client.release();
     return response.rows as TftCompositionAugmentEntity[];
   }

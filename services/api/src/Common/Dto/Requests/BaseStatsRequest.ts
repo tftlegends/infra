@@ -3,7 +3,7 @@ import { Transform } from "class-transformer";
 import { IsEnum, IsNumber, IsOptional, IsPositive, IsString, Max, Min } from "class-validator";
 import { TftSet } from "@TftLegends/Common/Enums/TftSet";
 import { TftTier } from "@TftLegends/Common/Enums/TftTier";
-import { DefaultValue } from "@TftLegends/Common/Contants/DefaultValue";
+import { DefaultValue } from "@TftLegends/Common/Constants/DefaultValue";
 
 
 export class BaseStatsRequest {
@@ -62,5 +62,6 @@ export class BaseStatsRequest {
   @IsEnum(TftTier)
   @IsOptional()
   tftTier? : TftTier = DefaultValue.TFT_TIER as unknown as TftTier;
+
 }
 

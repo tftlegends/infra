@@ -1,11 +1,13 @@
 import { Module } from "@nestjs/common";
 import { RepositoriesModule } from "@TftLegends/Common/Repositories/Module";
-import { AugmentsController } from "@TftLegends/Meta/Controllers/Augments";
-import { AugmentsService } from "@TftLegends/Meta/Services/Augments";
+import { MetaAugmentsController } from "@TftLegends/Meta/Controllers/Augments";
+import { MetaAugmentsService } from "@TftLegends/Meta/Services/Augments";
+import { MetaChampionsController } from "@TftLegends/Meta/Controllers/Champions";
+import { MetaChampionsService } from "@TftLegends/Meta/Services/Champions";
 
 @Module({
   imports: [RepositoriesModule],
-  controllers: [AugmentsController],
-  providers: [AugmentsService],
+  controllers: [MetaAugmentsController, MetaChampionsController],
+  providers: [MetaAugmentsService, MetaChampionsService],
 })
 export class MetaModule {}

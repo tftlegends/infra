@@ -1,0 +1,41 @@
+# Privacy Policy for TftLegends
+
+Effective Date: [Today's Date]
+
+## 1. Introduction
+
+Welcome to TftLegends! We are committed to respecting your privacy and ensuring the security of your information. This Privacy Policy outlines the types of information we collect, how we use it, and the steps we take to safeguard your data.
+
+## 2. Consent
+
+By using TftLegends, you agree to the collection and use of information in accordance with this policy.
+
+## 3. Information Collection and Use
+
+We prioritize your privacy and operate under the following guidelines:
+
+- **No Chat Messages Stored:** We do not store any chat messages. All interactions are transient and not recorded.
+
+- **No Personally Identifiable Information (PII):** We do not collect or store any PII. Your privacy and anonymity are ensured while using our service.
+
+- **Username Information:** The only piece of information we might request is a username, which is entirely optional. This is used solely to personalize your experience with TftLegends.
+
+## 4. Data Security
+
+We are dedicated to protecting your data from unauthorized access, alteration, disclosure, or destruction. We implement a variety of security measures to maintain the safety of your information.
+
+## 5. Data Sharing
+
+We do not share, sell, rent, or trade any information with third parties for their commercial purposes.
+
+## 6. Children's Privacy
+
+TftLegends does not knowingly collect information from individuals under the age of 13. If we become aware that we have collected personal data from children without verification of parental consent, we take steps to remove that information from our servers.
+
+## 7. Changes to This Privacy Policy
+
+We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.
+
+## 8. Contact Us
+
+If you have any questions about this Privacy Policy, please contact us.
