@@ -37,7 +37,9 @@ export class AugmentsRepository extends Repository {
       text: 'SELECT augmentName, COUNT(augmentName) FROM TftCompositionAugments WHERE placement <= $1 AND tftSet = $2 AND summonerTier = $3 GROUP BY augmentName ORDER BY COUNT(augmentName) DESC LIMIT $4',
       values: [placement, tftSet, tftTier, limit]
     }
+    console.info('query', query);
     const response = await client.query(query);
+    console.info('response', response);
     client.release();
     return response.rows as TftCompositionAugmentEntity[];
   }
@@ -49,7 +51,11 @@ export class AugmentsRepository extends Repository {
       text: 'SELECT augmentName, COUNT(augmentName) FROM TftCompositionAugments WHERE placement >= $1 AND tftSet = $2 AND summonerTier = $3 GROUP BY augmentName ORDER BY COUNT(augmentName) ASC LIMIT $4',
       values: [placement, tftSet, tftTier, limit]
     }
+    // TODO: Remove this after testing
+    console.info('query', query);
     const response = await client.query(query);
+    // TODO: Remove this after testing
+    console.info('response', response);
     client.release();
     return response.rows as TftCompositionAugmentEntity[];
   }

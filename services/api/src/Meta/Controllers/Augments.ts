@@ -19,6 +19,8 @@ export class AugmentsController {
   @ApiQuery({ name: 'tftTier', type: String, required: false })
   @ApiOkResponse({ type: [PartialType(TftCompositionAugmentEntity)] })
   async getTopAugments(@Query() stats: BaseStatsRequest) {
+    // TODO: Remove this after testing
+    console.info('stats', stats);
     return this.augmentsRepository.listTopAugments(stats);
   }
 
@@ -29,6 +31,8 @@ export class AugmentsController {
   @ApiQuery({ name: 'tftTier', type: String, required: false })
   @ApiOkResponse({ type: [PartialType(TftCompositionAugmentEntity)] })
   async getWorstAugments(@Query() stats: BaseStatsRequest) {
+    // TODO: Remove this after testing
+    console.info('stats', stats);
     return this.augmentsRepository.listWorstAugments(stats);
   }
 
