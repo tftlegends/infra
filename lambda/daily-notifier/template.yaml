@@ -1,0 +1,63 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: TFT Legends Daily Notifier Lambda
+
+Resources:
+  TFTLegendsDailyNotifierLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: dist/main.handler
+      Runtime: nodejs18.x
+      Description: Fetches TFT matches from Riot API.
+      MemorySize: 256
+      Timeout: 200
+      CodeUri: ./dist
+      Policies:
+        - Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Action:
+                - ssm:GetParameter
+                - sqs:ReceiveMessage
+                - sqs:DeleteMessage
+                - sqs:GetQueueAttributes
+                - sqs:ChangeMessageVisibility
+                - sqs:SendMessage
+              Resource:
+                - !Sub 'arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/COMMON*'
+                - !Sub 'arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/TFTLEGENDS_MATCH_SCRAPER*'
+                - !Sub 'arn:aws:sqs:${AWS::Region}:${AWS::AccountId}:bot-message-processing-queue'
+        - Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Action:
+                - cloudwatch:PutMetricData
+                - cloudwatch:GetMetricStatistics
+                - cloudwatch:ListMetrics
+                - cloudwatch:GetMetricData
+              Resource: '*'
+      Environment:
+        Variables:
+          SQS_QUEUE_URL: !Sub 'https://sqs.${AWS::Region}.amazonaws.com/${AWS::AccountId}/bot-message-processing-queue'
+
+  TFTLegendsDailyNotifierTrigger:
+    Type: AWS::Events::Rule
+    DeletionPolicy: Delete
+    Properties:
+      Description: Trigger for TFT Legends Daily Notifier
+      ScheduleExpression: cron(30 18 * * ? *)
+      State: ENABLED
+      Targets:
+        - Arn: !GetAtt TFTLegendsDailyNotifierLambda.Arn
+          Id: TFTLegendsDailyNotifierLambda
+
+
+  TFTLegendsDailyNotifierInvokePermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: 'lambda:InvokeFunction'
+      FunctionName: !GetAtt TFTLegendsDailyNotifierLambda.Arn
+      Principal: 'events.amazonaws.com'
+      SourceArn: !GetAtt TFTLegendsDailyNotifierLambda.Arn
+
+
