@@ -8,7 +8,7 @@ Resources:
     Properties:
       Handler: dist/main.handler
       Runtime: nodejs18.x
-      Description: Fetches TFT matches from Riot API.
+      Description: Notify DevOps team about TFT Legends daily metrics
       MemorySize: 256
       Timeout: 200
       CodeUri: ./dist
