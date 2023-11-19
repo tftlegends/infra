@@ -110,7 +110,7 @@ export const handler = async (event: SQSEvent | object,context: object) => {
   }
   const tftEntry = leagueEntries.find((entry) => entry.queueType === "RANKED_TFT");
   if(tftEntry === undefined) {
-    throw new Error("No TFT entry found");
+    throw new Error("No TFT entry found for " + username);
   }
   const fallbackTier = tftEntry.tier;
   console.info("Fetching matches for " + tftEntry.summonerName + " " + tftEntry.tier + " " + tftEntry.rank + " " + tftEntry.leaguePoints + "LP");

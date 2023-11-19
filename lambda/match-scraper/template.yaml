@@ -46,7 +46,7 @@ Resources:
     DeletionPolicy: Delete
     Properties:
       Description: Trigger for TFT Legends Match Scraper
-      ScheduleExpression: rate(30 minutes)
+      ScheduleExpression: rate(15 minutes)
       State: ENABLED
       Targets:
         - Arn: !GetAtt TFTLegendsMatchScraperLambda.Arn
@@ -59,7 +59,7 @@ Resources:
       Action: 'lambda:InvokeFunction'
       FunctionName: !GetAtt TFTLegendsMatchScraperLambda.Arn
       Principal: 'events.amazonaws.com'
-      SourceArn: !GetAtt TFTLegendsMatchScraperLambda.Arn
+      SourceArn:  !GetAtt TFTLegendsMatchScraperTrigger.Arn
 
 
   TFTLegendsUsernameProcessorQueueEventSourceMapping:
