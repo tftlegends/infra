@@ -147,9 +147,7 @@ export const handler = async (event: SQSEvent | object,context: object) => {
             participants: compositions,tft_set_core_name: matchTftSet, game_length, tft_game_type
           } = info;
 
-          if(matchTftSet !== tftSetVersion || tft_game_type !== "standard") {
-            continue;
-          }
+
           const { participants } = metadata;
           await transaction.query("BEGIN");
 
@@ -162,6 +160,9 @@ export const handler = async (event: SQSEvent | object,context: object) => {
             metadata: metadata
           } as TftMatchEntity;
           await tftMatchRepository.insertMatch(tftMatch, transaction);
+          if(matchTftSet !== tftSetVersion || tft_game_type !== "standard") {
+            continue;
+          }
 
           for( const participantPuuid of participants) {
             let summoner = await tftSummonersRepository.getSummonerByPuuid(participantPuuid);
