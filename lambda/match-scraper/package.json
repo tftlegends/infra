@@ -21,8 +21,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@aws-sdk/client-cloudwatch": "^3.454.0",
     "@fightmegg/riot-api": "^0.0.17",
-    "aws-sdk": "^2.1497.0",
+    "@types/aws-sdk": "^2.7.0",
+    "aws-sdk": "^2.1499.0",
     "cli-progress": "^3.12.0",
     "dotenv": "^16.3.1",
     "lodash": "^4.17.21",

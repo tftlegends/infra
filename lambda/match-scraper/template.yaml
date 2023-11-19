@@ -2,6 +2,11 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: 'AWS::Serverless-2016-10-31'
 Description: TFT Legends Match Scraper Lambda
 
+Parameters:
+  MetricsNamespace:
+    Type: String
+    Description: The namespace for the metrics
+    Default: 'TFTLegendsMatchScraper'
 
 Resources:
   TFTLegendsMatchScraperLambda:
@@ -27,6 +32,16 @@ Resources:
                 - !Sub 'arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/COMMON*'
                 - !Sub 'arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/TFTLEGENDS_MATCH_SCRAPER*'
                 - !Sub 'arn:aws:sqs:${AWS::Region}:${AWS::AccountId}:tft-legends-username-processing-queue'
+        - CloudWatchPutMetricPolicy:
+            Version: '2012-10-17'
+            MetricNamespace: !Ref MetricsNamespace
+            Statement:
+              - Effect: Allow
+                Action:
+                  - cloudwatch:PutMetricData
+                  - cloudwatch:GetMetricStatistics
+                  - cloudwatch:ListMetrics
+                Resource: '*'
 
   TFTLegendsMatchScraperTrigger:
     Type: AWS::Events::Rule
@@ -67,3 +82,4 @@ Resources:
       FunctionName: !GetAtt TFTLegendsMatchScraperLambda.Arn
       Principal: 'sqs.amazonaws.com'
       SourceArn: !Sub 'arn:aws:sqs:${AWS::Region}:${AWS::AccountId}:tft-legends-username-processing-queue'
+

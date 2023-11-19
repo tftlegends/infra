@@ -19,6 +19,8 @@ import TftMatchEntity from "@/domain/entities/tftMatch";
 import EnvironmentProvider from "@/common/environmentProvider";
 import { Parameters } from "@/domain/enums/parameters";
 import { SQSEvent } from "@/domain/types/sqsEvent";
+import { CloudWatchMetrics } from "@/common/cloudWatchMetrics";
+import { Metrics } from "@/domain/enums/metrics";
 
 export const handler = async (event: SQSEvent | object,context: object) => {
 
@@ -59,6 +61,8 @@ export const handler = async (event: SQSEvent | object,context: object) => {
     },
 
   })
+
+  const cloudWatch = new CloudWatchMetrics();
 
   const tftSummonersRepository = new TftSummonersRepository();
   const tftMatchRepository = new TftMatchesRepository();
@@ -121,13 +125,19 @@ export const handler = async (event: SQSEvent | object,context: object) => {
       break;
     }
 
-    for(const matchId of matchList) {
+    const matches = await tftMatchRepository.getMultipleMatchesByMatchIds(matchList);
+    if(matches.length === matchList.length) {
+      iteration.isFinished = true;
+      break;
+    }
 
+    const notAddedMatches = matchList.filter((matchId) => !matches.some((match) => match.matchid === matchId))
+
+    for(const matchId of notAddedMatches) {
+      const transactionStartTime = performance.now();
       const transaction = await VectorDBPool.getInstance().getClient();
 
       try{
-        const match = await tftMatchRepository.getMatchByMatchId(matchId);
-        if(!match) {
           const matchDetails = await riotMatchService.getMatchDetailsByMatchId(matchId) as unknown as MatchResponse;
           const {
             metadata,
@@ -137,7 +147,7 @@ export const handler = async (event: SQSEvent | object,context: object) => {
             participants: compositions,tft_set_core_name: matchTftSet, game_length, tft_game_type
           } = info;
 
-          if(matchTftSet !== tftSetVersion) {
+          if(matchTftSet !== tftSetVersion || tft_game_type !== "standard") {
             continue;
           }
           const { participants } = metadata;
@@ -267,18 +277,19 @@ export const handler = async (event: SQSEvent | object,context: object) => {
                 }));
           }
           await transaction.query("COMMIT");
+          const transactionEndTime = performance.now();
+          const transactionDuration = transactionEndTime - transactionStartTime;
+          await cloudWatch.sendDurationMetric(Metrics.TRANSACTION_DURATIONS,transactionDuration);
+          await cloudWatch.sendCountMetric(Metrics.SUCCESSFUL_TRANSACTIONS);
           console.info("Added match " + matchId);
-
-
-          }
-
-
         }
       catch (error) {
         console.error(error);
         await transaction.query("ROLLBACK");
+        await cloudWatch.sendCountMetric(Metrics.FAILED_TRANSACTIONS);
+
       }finally{
-        await transaction.release();
+        transaction.release();
       }
 
     }

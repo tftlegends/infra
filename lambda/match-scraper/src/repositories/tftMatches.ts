@@ -21,6 +21,17 @@ export default class TftMatchesRepository extends Repository {
     return result.rows[0] as TftMatchEntity;
   }
 
+  async getMultipleMatchesByMatchIds(matchIds: string[]): Promise<TftMatchEntity[]> {
+    const client = await this.pool.getClient();
+    const query = {
+      text: 'SELECT * FROM TftMatches WHERE matchId = ANY($1)',
+      values: [matchIds]
+    };
+    const result = await client.query(query);
+    client.release();
+    return result.rows as TftMatchEntity[];
+  }
+
   async insertMatch(match: TftMatchEntity, transaction?:PoolClient): Promise<TftMatchEntity> {
     const client = transaction || await this.pool.getClient();
     const query = {
