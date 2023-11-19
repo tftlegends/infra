@@ -1,5 +1,0 @@
-
-
-const getLastMatch = (summonerName) => {
-	return
-}

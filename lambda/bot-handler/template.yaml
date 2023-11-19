@@ -1,0 +1,69 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: Bot Message Handler
+
+
+Resources:
+  BotMessageHandlerLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: dist/main.handler
+      Runtime: nodejs18.x
+      Description: Fetches TFT matches from Riot API.
+      MemorySize: 256
+      Timeout: 200
+      CodeUri: ./dist
+      Policies:
+        - Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Action:
+                - ssm:GetParameter
+                - sqs:ReceiveMessage
+                - sqs:DeleteMessage
+                - sqs:GetQueueAttributes
+                - sqs:ChangeMessageVisibility
+              Resource:
+                - !Sub 'arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/COMMON*'
+                - !Sub 'arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/TFTLEGENDS_BOT_MESSAGE_HANDLER*'
+                - !Sub 'arn:aws:sqs:${AWS::Region}:${AWS::AccountId}:bot-message-processing-queue'
+
+  BotMessageHandlerTrigger:
+    Type: AWS::Events::Rule
+    DeletionPolicy: Delete
+    Properties:
+      Description: Trigger for TFT Legends Match Scraper
+      ScheduleExpression: rate(30 minutes)
+      State: ENABLED
+      Targets:
+        - Arn: !GetAtt BotMessageHandlerLambda.Arn
+          Id: BotMessageHandlerLambda
+
+
+  BotMessageHandlerInvokePermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: 'lambda:InvokeFunction'
+      FunctionName: !GetAtt BotMessageHandlerLambda.Arn
+      Principal: 'events.amazonaws.com'
+      SourceArn: !GetAtt BotMessageHandlerLambda.Arn
+
+
+  BotMessageProcessingQueueEventSourceMapping:
+    Type: AWS::Lambda::EventSourceMapping
+    DependsOn: BotMessageHandlerLambda
+    Properties:
+      BatchSize: 1
+      Enabled: true
+      EventSourceArn: !Sub 'arn:aws:sqs:${AWS::Region}:${AWS::AccountId}:bot-message-processing-queue'
+      FunctionName: !GetAtt BotMessageHandlerLambda.Arn
+
+
+
+  BotMessageProcessingQueuePermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: 'lambda:InvokeFunction'
+      FunctionName: !GetAtt BotMessageHandlerLambda.Arn
+      Principal: 'sqs.amazonaws.com'
+      SourceArn: !Sub 'arn:aws:sqs:${AWS::Region}:${AWS::AccountId}:bot-message-processing-queue'
