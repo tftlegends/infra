@@ -10,7 +10,7 @@
     "validate": "aws cloudformation validate-template --template-body file://template.yaml",
     "make-bucket": "aws s3 mb s3://tft-legends-packages",
     "package": "aws cloudformation package --template-file template.yaml --s3-bucket tft-legends-packages --output-template-file packaged-template.yaml",
-    "deploy": "aws cloudformation deploy --template-file packaged-template.yaml --stack-name TftLegendsDailyNotifierStack --capabilities CAPABILITY_IAM CAPABILITY_AUTO_EXPAND",
+    "deploy": "aws cloudformation deploy --template-file packaged-template.yaml --stack-name TftLegendsDailyNotifierStack --capabilities CAPABILITY_IAM CAPABILITY_AUTO_EXPAND --no-fail-on-empty-changeset",
     "delete": "aws cloudformation delete-stack --stack-name TftLegendsDailyNotifierStack",
     "deploy:e2e": "npm run validate && npm run build && npm run package && npm run deploy",
     "test:ci": "npm run lint && npm run test -- --coverage --coverageReporters=text-lcov",

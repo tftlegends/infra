@@ -43,6 +43,7 @@ Resources:
   TFTLegendsDailyNotifierTrigger:
     Type: AWS::Events::Rule
     DeletionPolicy: Delete
+    DependsOn: TFTLegendsDailyNotifierLambda
     Properties:
       Description: Trigger for TFT Legends Daily Notifier
       ScheduleExpression: cron(30 18 * * ? *)
@@ -54,6 +55,7 @@ Resources:
 
   TFTLegendsDailyNotifierInvokePermission:
     Type: AWS::Lambda::Permission
+    DependsOn: TFTLegendsDailyNotifierLambda
     Properties:
       Action: 'lambda:InvokeFunction'
       FunctionName: !GetAtt TFTLegendsDailyNotifierLambda.Arn
