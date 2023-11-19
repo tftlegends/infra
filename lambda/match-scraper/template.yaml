@@ -32,16 +32,14 @@ Resources:
                 - !Sub 'arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/COMMON*'
                 - !Sub 'arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/TFTLEGENDS_MATCH_SCRAPER*'
                 - !Sub 'arn:aws:sqs:${AWS::Region}:${AWS::AccountId}:tft-legends-username-processing-queue'
-        - CloudWatchPutMetricPolicy:
-            Version: '2012-10-17'
-            MetricNamespace: !Ref MetricsNamespace
-            Statement:
-              - Effect: Allow
-                Action:
-                  - cloudwatch:PutMetricData
-                  - cloudwatch:GetMetricStatistics
-                  - cloudwatch:ListMetrics
-                Resource: '*'
+        - Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Action:
+                - cloudwatch:PutMetricData
+                - cloudwatch:GetMetricStatistics
+                - cloudwatch:ListMetrics
+              Resource: '*'
 
   TFTLegendsMatchScraperTrigger:
     Type: AWS::Events::Rule
