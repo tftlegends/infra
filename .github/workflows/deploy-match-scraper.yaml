@@ -6,11 +6,7 @@ on:
       - main
     paths:
       - 'lambda/match-scraper/**'
-  pull_request:
-    branches:
-      - main
-    paths:
-      - 'lambda/match-scraper/**'
+
 
 concurrency:
   group: tft-match-scraper-CG

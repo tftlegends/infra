@@ -6,11 +6,7 @@ on:
       - main
     paths:
       - 'lambda/bot-handler/**'
-  pull_request:
-    branches:
-      - main
-    paths:
-      - 'lambda/bot-handler/**'
+
 
 concurrency:
   group: tft-legends-bot-handler-CG

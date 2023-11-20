@@ -6,11 +6,7 @@ on:
       - main
     paths:
       - 'lambda/daily-notifier/**'
-  pull_request:
-    branches:
-      - main
-    paths:
-      - 'lambda/daily-notifier/**'
+
 
 concurrency:
   group: tft-legends-daily-notifier-CG
