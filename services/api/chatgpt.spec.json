@@ -76,6 +76,25 @@
         ],
         "responses": {}
       }
+    },
+    "Prod/composition/random-winning": {
+      "get": {
+        "description": "Get random winning composition",
+        "operationId": "GetRandomWinningComposition",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of items to be retrieved",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          }
+        ],
+        "responses": {}
+      }
     }
   },
   "components": {
