@@ -2,7 +2,6 @@ import { Injectable } from "@nestjs/common";
 import Repository from "@TftLegends/Common/Repositories/Repository";
 import TftCompositionChampionEntity from "@TftLegends/Common/Entities/TftCompositionChampion";
 import { DefaultValue } from "@TftLegends/Common/Constants/DefaultValue";
-import { BaseStatsRequest } from "@TftLegends/Common/Dto/Requests/BaseStatsRequest";
 import { OrderedBaseStatsRequest } from "@TftLegends/Common/Dto/Requests/OrderedBaseStatsRequest";
 
 @Injectable()
