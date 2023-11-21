@@ -96,170 +96,142 @@
         "responses": {}
       }
     },
-    "Prod/compositions/query": {
+    "/Prod/composition/query": {
       "post": {
         "description": "Get compositions by query",
         "operationId": "GetCompositionsByQuery",
-        "parameters": [
-          {
-            "name": "limit",
-            "in": "body",
-            "description": "Number of items to be retrieved",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 10
-            }
-          },
-          {
-            "name": "placement",
-            "in": "body",
-            "description": "Placement of the composition",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 1
-            }
-          },
-          {
-            "name": "champions",
-            "in": "body",
-            "description": "Requested champions and optionally tiers of the champions in the composition",
-            "required": false,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "championName": {
-                    "type": "string",
-                    "required": true
-                  },
-                  "championTier": {
-                    "type": "integer",
-                    "required": false,
-                    "default": null
-                  }
-                }
-              }
-            }
-          },
-          {
-            "name": "traits",
-            "in": "body",
-            "description": "Requested traits and optionally tiers of the traits in the composition",
-            "required": false,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "traitName": {
-                    "type": "string",
-                    "required": true
-                  },
-                  "traitTier": {
-                    "type": "integer",
-                    "required": false,
-                    "default": null
-                  }
-                }
-              }
-            }
-          },
-          {
-            "name": "items",
-            "in": "body",
-            "description": "Requested items and optionally champions of the items in the composition",
-            "required": false,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "itemName": {
-                    "type": "string",
-                    "required": true
-                  },
-                  "championName": {
-                    "type": "string",
-                    "required": false,
-                    "default": null
-                  }
-                }
-              }
-            }
-          },
-          {
-            "name": "augments",
-            "in": "body",
-            "description": "Requested augments and optionally tiers of the augments in the composition",
-            "required": false,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "augmentName": {
-                    "type": "string",
-                    "required": true
-                  }
-                }
-              }
-            }
-          },
-          {
-            "name": "items",
-            "in": "body",
-            "description": "Requested items and optionally champions of the items in the composition",
-            "required": false,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "itemName": {
-                    "type": "string",
-                    "required": true
-                  },
-                  "championName": {
-                    "type": "string",
-                    "required": false,
-                    "default": null
-                  }
-                }
-              }
-            }
-          },
-          {
-            "name": "traits",
-            "in": "body",
-            "description": "Requested traits and optionally tiers of the traits in the composition",
-            "required": false,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "traitName": {
-                    "type": "string",
-                    "required": true
-                  },
-                  "traitTier": {
-                    "type": "integer",
-                    "required": false,
-                    "default": null
-                  }
-                }
+        "requestBody": {
+          "description": "Query for compositions",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FilterQueryRequest"
               }
             }
           }
-        ],
-        "responses": {}
+        }
       }
     }
   },
   "components": {
-    "schemas": {}
+    "schemas": {
+      "ChampionQuery": {
+        "type": "object",
+        "properties": {
+          "championName": {
+            "type": "string"
+          },
+          "championTier": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "championName"
+        ],
+        "example": [
+          {
+            "championName": "Darius"
+          }
+        ]
+      },
+      "TraitQuery": {
+        "type": "object",
+        "properties": {
+          "traitName": {
+            "type": "string"
+          },
+          "traitTier": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "traitName"
+        ],
+        "example": [
+          {
+            "traitName": "Noxus"
+          }
+        ]
+      },
+      "ItemQuery": {
+        "type": "object",
+        "properties": {
+          "itemName": {
+            "type": "string"
+          },
+          "championName": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "itemName"
+        ],
+        "example": [
+          {
+            "itemName": "Infinity Edge"
+          }
+        ]
+      },
+      "AugmentQuery": {
+        "type": "object",
+        "properties": {
+          "augmentName": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "augmentName"
+        ],
+        "example": [
+          {
+            "augmentName": "Noxus Trait"
+          }
+        ]
+      },
+      "FilterQueryRequest": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "integer",
+            "default": 10,
+            "minimum": 1,
+            "maximum": 100,
+            "example": 20
+          },
+          "placement": {
+            "type": "integer",
+            "default": 1,
+            "example": 1,
+            "minimum": 1,
+            "maximum": 8
+          },
+          "champions": {
+            "items": {
+              "$ref": "#/components/schemas/ChampionQuery"
+            },
+            "type": "array"
+          },
+          "traits": {
+            "items": {
+              "$ref": "#/components/schemas/TraitQuery"
+            },
+            "type": "array"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/ItemQuery"
+            },
+            "type": "array"
+          },
+          "augments": {
+            "items": {
+              "$ref": "#/components/schemas/AugmentQuery"
+            },
+            "type": "array"
+          }
+        }
+      }
+    }
   }
 }

@@ -30,11 +30,7 @@ export default class FilterQueryRequest extends BaseStatsRequest {
     example: [
       {
         championName: 'Darius',
-        championTier: 1
-      },
-      {
-        championName: 'Garen',
-        championTier: 2
+        championTier: 3
       }
     ],
     type: [ChampionQuery] })
@@ -44,11 +40,11 @@ export default class FilterQueryRequest extends BaseStatsRequest {
   @ApiPropertyOptional({
     example: [
       {
-        traitName: 'Cultist',
+        traitName: 'Noxus',
         traitTier: 3
       },
       {
-        traitName: 'Duelist',
+        traitName: 'Ionia',
         traitTier: 2
       }
     ],
@@ -61,10 +57,6 @@ export default class FilterQueryRequest extends BaseStatsRequest {
       {
         itemName: 'Bramble Vest',
         championName: 'Darius'
-      },
-      {
-        itemName: 'Bramble Vest',
-        championName: 'Garen'
       }
     ],
     type: [ItemQuery] })
@@ -74,13 +66,8 @@ export default class FilterQueryRequest extends BaseStatsRequest {
   @ApiPropertyOptional({
     example: [
       {
-        augmentName: 'Chosen Duelist',
-        augmentTier: 1
+        augmentName: 'Noxus Emblem'
       },
-      {
-        augmentName: 'Chosen Cultist',
-        augmentTier: 2
-      }
     ],
     type: [AugmentQuery] })
   @IsOptional()
