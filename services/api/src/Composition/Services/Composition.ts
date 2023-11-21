@@ -4,6 +4,7 @@ import { BaseStatsRequest } from "@TftLegends/Common/Dto/Requests/BaseStatsReque
 import { DefaultValue } from "@TftLegends/Common/Constants/DefaultValue";
 import { TftTier } from "@TftLegends/Common/Enums/TftTier";
 import { TftSet } from "@TftLegends/Common/Enums/TftSet";
+import FilterQueryRequest from "@TftLegends/Common/Dto/Requests/FilterQueryRequest";
 
 
 @Injectable()
@@ -26,6 +27,31 @@ export class CompositionService {
       tftSet: tftSet as  TftSet,
       tftTier: tftTier as TftTier
                                                                     });
+  }
+
+  public async getQueryResult(
+    request: FilterQueryRequest
+  ) {
+    const {
+      limit = 20,
+      tftSet = DefaultValue.TFT_SET,
+      tftTier = DefaultValue.TFT_TIER,
+      placement = 1,
+      champions = [],
+      traits = [],
+      items = [],
+      augments = [],
+    } = request;
+    return this.compositionsRepository.getCompositions({
+      limit,
+      tftSet: tftSet as  TftSet,
+      tftTier: tftTier as TftTier,
+      placement,
+      champions,
+      traits,
+      items,
+      augments,
+    });
   }
 
 }

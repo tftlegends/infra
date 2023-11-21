@@ -95,6 +95,168 @@
         ],
         "responses": {}
       }
+    },
+    "Prod/compositions/query": {
+      "post": {
+        "description": "Get compositions by query",
+        "operationId": "GetCompositionsByQuery",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "body",
+            "description": "Number of items to be retrieved",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 10
+            }
+          },
+          {
+            "name": "placement",
+            "in": "body",
+            "description": "Placement of the composition",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          },
+          {
+            "name": "champions",
+            "in": "body",
+            "description": "Requested champions and optionally tiers of the champions in the composition",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "championName": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "championTier": {
+                    "type": "integer",
+                    "required": false,
+                    "default": null
+                  }
+                }
+              }
+            }
+          },
+          {
+            "name": "traits",
+            "in": "body",
+            "description": "Requested traits and optionally tiers of the traits in the composition",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "traitName": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "traitTier": {
+                    "type": "integer",
+                    "required": false,
+                    "default": null
+                  }
+                }
+              }
+            }
+          },
+          {
+            "name": "items",
+            "in": "body",
+            "description": "Requested items and optionally champions of the items in the composition",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "itemName": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "championName": {
+                    "type": "string",
+                    "required": false,
+                    "default": null
+                  }
+                }
+              }
+            }
+          },
+          {
+            "name": "augments",
+            "in": "body",
+            "description": "Requested augments and optionally tiers of the augments in the composition",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "augmentName": {
+                    "type": "string",
+                    "required": true
+                  }
+                }
+              }
+            }
+          },
+          {
+            "name": "items",
+            "in": "body",
+            "description": "Requested items and optionally champions of the items in the composition",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "itemName": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "championName": {
+                    "type": "string",
+                    "required": false,
+                    "default": null
+                  }
+                }
+              }
+            }
+          },
+          {
+            "name": "traits",
+            "in": "body",
+            "description": "Requested traits and optionally tiers of the traits in the composition",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "traitName": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "traitTier": {
+                    "type": "integer",
+                    "required": false,
+                    "default": null
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {}
+      }
     }
   },
   "components": {
