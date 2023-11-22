@@ -1,6 +1,8 @@
 import MappingManager from "@/domain/mappings/manager";
 import set92IndexMapping from "@/domain/mappings/items/indices/set92";
 import set92NameMapping from "@/domain/mappings/items/names/set92";
+import set10IndexMapping from "@/domain/mappings/items/indices/set10";
+import set10NameMapping from "@/domain/mappings/items/names/set10";
 
 export default class ItemsMappingManager extends MappingManager {
   constructor(version: string){
@@ -11,13 +13,15 @@ export default class ItemsMappingManager extends MappingManager {
       [key: string]: number
     } } = {
     "set92": set92IndexMapping,
-    "default": set92IndexMapping,
+    "set10": set10IndexMapping,
+    "default": set10IndexMapping,
   };
   protected nameMapper: { [key: string]: {
       [key: string]: string
     } } = {
     "set92": set92NameMapping,
-    "default": set92NameMapping,
+    "set10": set10NameMapping,
+    "default": set10NameMapping,
   };
 
   convertStringToIndex(input: string): number {

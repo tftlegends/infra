@@ -4,8 +4,9 @@ export class MappingManager {
   protected nameMapping: { [key: string]: string }| undefined;
   protected indexMapping: { [key: string]: number } | undefined;
   static versionMapping: { [key: string]: string } = {
-    "default": "set92",
-    "TFTSet9_2": "set92"
+    "default": "set10",
+    "TFTSet9_2": "set92",
+    "TFTSet10": "set10"
   };
   protected rootPath: string;
   protected errorMessage = "Mapping not initialized";

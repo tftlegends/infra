@@ -48,5 +48,6 @@ module.exports = {
     "prefer-const": 'off',
     "@typescript-eslint/no-unused-vars": "off",
     "unicorn/no-static-only-class": "off",
+    "sonarjs/no-redundant-boolean": "off",
   }
 };

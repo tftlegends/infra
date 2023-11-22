@@ -95,12 +95,19 @@ export const handler = async (event: SQSEvent | object,context: object) => {
     [key: string]: string
   } = {}
 
+  const fallbackTier = "PLATINUM";
+
   let leagueEntries: LeagueEntry[];
   if(username){
     leagueEntries = await riotSummonerService.getSummonerDetailsFromSummonerName(username as string);
-    if(!leagueEntries || leagueEntries.length === 0) {
-      throw new Error("Summoner with username " + username + " not found");
+    try{
+      if(!leagueEntries || leagueEntries.length === 0) {
+        throw new Error("Summoner with username " + username + " not found");
+      }
+    }catch{
+      summonerTiers[username as string] = "PLATINUM";
     }
+
   }else {
     const summoner = await tftSummonersRepository.getRandomSummoner();
     if(!summoner) {
@@ -109,14 +116,17 @@ export const handler = async (event: SQSEvent | object,context: object) => {
     leagueEntries = await riotSummonerService.getSummonerDetailsFromSummonerId(summoner.summonerid);
   }
   const tftEntry = leagueEntries.find((entry) => entry.queueType === "RANKED_TFT");
-  if(tftEntry === undefined) {
-    throw new Error("No TFT entry found for " + username);
+  let puuid = "";
+  if(tftEntry === undefined){
+    const summoner = await tftSummonersRepository.getSummonerBySummonerName(username as string);
+    if(!summoner) {
+      throw new Error("Summoner with username " + username + " not found");
+    }
+    puuid = summoner.summonerpuuid;
+  }else {
+    puuid = tftEntry.puuid;
+    console.info("Fetching matches for " + tftEntry.summonerName + " " + tftEntry.tier + " " + tftEntry.rank + " " + tftEntry.leaguePoints + "LP");
   }
-  const fallbackTier = tftEntry.tier;
-  console.info("Fetching matches for " + tftEntry.summonerName + " " + tftEntry.tier + " " + tftEntry.rank + " " + tftEntry.leaguePoints + "LP");
-  const {
-    puuid
-  } = tftEntry;
 
   while (!iteration.isFinished){
     const matchList = await riotMatchService.getMatchIdsByPuuid(puuid, iteration.start, iteration.count);

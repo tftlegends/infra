@@ -20,8 +20,8 @@ CREATE TABLE IF NOT EXISTS TftCompositions
     summonerPuuid        VARCHAR(78) NOT NULL,
     matchId              VARCHAR(20) NOT NULL,
     composition          JSONB       NOT NULL,
-    -- 32 is the number of different traits available.
-    compVector           VECTOR(32)  NOT NULL,
+    -- Number of traits are much less than 64. 64 is just a safe number.
+    compVector           VECTOR(64)  NOT NULL,
     PRIMARY KEY (summonerPuuid, matchId),
     FOREIGN KEY (summonerPuuid) REFERENCES TftSummoners (summonerPuuid) ON DELETE CASCADE,
     FOREIGN KEY (matchId) REFERENCES TftMatches (matchId) ON DELETE CASCADE,

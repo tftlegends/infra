@@ -1,13 +1,13 @@
 import TraitsMappingManager from "@/domain/mappings/traits";
 import { CompositionTraitResponse } from "@/domain/types/composition";
+import { COMPOSITION_VECTOR_LENGTH } from "@/domain/constants/db";
 
 
 export default class CompositionVectorCalculator {
   constructor(private readonly traitsMappingManager: TraitsMappingManager) {}
 
   public calculateVector(traits: CompositionTraitResponse[]) : number[] {
-    const numberOfTraits = this.traitsMappingManager.length
-    const vector = Array.from({ length: numberOfTraits }).fill(0)
+    const vector = Array.from({ length: COMPOSITION_VECTOR_LENGTH }).fill(0)
 
     for (const trait of traits) {
       const traitIndex = this.traitsMappingManager.convertStringToIndex(trait.name);

@@ -1,0 +1,3 @@
+
+
+export const COMPOSITION_VECTOR_LENGTH = 64;

@@ -11,97 +11,12 @@
     }
   ],
   "paths": {
-    "/Prod/meta/augments/worst": {
-      "get": {
-        "description": "Get worst augments in TFT",
-        "operationId": "GetWorstAugments",
-        "parameters": [
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "Number of items to be retrieved",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 10
-            }
-          }
-        ],
-        "responses": {}
-      }
-    },
-    "/Prod/meta/items/by-champion-name": {
-      "get": {
-        "description": "Get best items for given champion",
-        "operationId": "GetBestItemsForChampion",
-        "parameters": [
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "Number of items to be retrieved",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 10
-            }
-          },
-          {
-            "name": "championName",
-            "in": "query",
-            "description": "Name of the champion",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {}
-      }
-    },
-    "/Prod/meta/augments/top": {
-      "get": {
-        "description": "Get top augments in TFT",
-        "operationId": "GetBestAugments",
-        "parameters": [
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "Number of items to be retrieved",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 10
-            }
-          }
-        ],
-        "responses": {}
-      }
-    },
-    "/Prod/composition/random-winning": {
-      "get": {
-        "description": "Get random winning composition",
-        "operationId": "GetRandomWinningComposition",
-        "parameters": [
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "Number of items to be retrieved",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "default": 1
-            }
-          }
-        ],
-        "responses": {}
-      }
-    },
     "/Prod/composition/query": {
       "post": {
         "description": "Get compositions by query",
         "operationId": "GetCompositionsByQuery",
         "requestBody": {
-          "description": "Query for compositions",
+          "description": "Query for desired compositions. For champions you can specify the championName and optionally championTier. For traits you can specify the traitName and optionally traitTier. For items you can specify the itemName and optionally championName. For augments you have to specify the augmentName.",
           "required": true,
           "content": {
             "application/json": {
@@ -126,9 +41,6 @@
             "type": "number"
           }
         },
-        "required": [
-          "championName"
-        ],
         "example": [
           {
             "championName": "Darius"
@@ -210,25 +122,61 @@
             "items": {
               "$ref": "#/components/schemas/ChampionQuery"
             },
-            "type": "array"
+            "type": "array",
+            "description": "List of champions OR champions with tier to filter by",
+            "example": [
+              {
+                "championName": "Darius",
+                "championTier": 3
+              },
+              {
+                "championName": "Sion"
+              }
+            ]
           },
           "traits": {
             "items": {
               "$ref": "#/components/schemas/TraitQuery"
             },
-            "type": "array"
+            "type": "array",
+            "description": "List of traits to filter by",
+            "example": [
+              {
+                "traitName": "Noxus",
+                "traitTier": 3
+              },
+              {
+                "traitName": "Shurima"
+              }
+            ]
           },
           "items": {
             "items": {
               "$ref": "#/components/schemas/ItemQuery"
             },
-            "type": "array"
+            "type": "array",
+            "example": [
+              {
+                "itemName": "Infinity Edge",
+                "championName": "Darius"
+              },
+              {
+                "itemName": "Warmog's Armor"
+              }
+            ],
+            "description": "List of items or items with champion to filter by"
           },
           "augments": {
             "items": {
               "$ref": "#/components/schemas/AugmentQuery"
             },
-            "type": "array"
+            "type": "array",
+            "example": [
+              {
+                "augmentName": "Noxus Trait"
+              }
+            ],
+            "description": "List of augments to filter by"
           }
         }
       }
