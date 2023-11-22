@@ -1,6 +1,6 @@
 import TraitsMappingManager from "@/domain/mappings/traits";
 import { CompositionTraitResponse } from "@/domain/types/composition";
-import { COMPOSITION_VECTOR_LENGTH } from "@/domain/constants/db";
+import { COMPOSITION_VECTOR_LENGTH } from "@/domain/constants/database";
 
 
 export default class CompositionVectorCalculator {
