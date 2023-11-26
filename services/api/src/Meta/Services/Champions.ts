@@ -18,4 +18,5 @@ export class MetaChampionsService {
       ...statsRequest, isDescending: false,
     });
   }
+
 }

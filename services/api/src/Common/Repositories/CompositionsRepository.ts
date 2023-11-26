@@ -21,11 +21,12 @@ export class CompositionsRepository extends Repository {
       limit = DefaultValue.LIMIT,
       tftSet = DefaultValue.TFT_SET,
       tftTier = DefaultValue.TFT_TIER,
+      placement = DefaultValue.PLACEMENT,
     } = request;
     const client = await this.pool.getClient();
     const query = `
     SELECT * FROM TftCompositions
-    WHERE placement = 1 AND tftSet = '${tftSet}' AND summonerTier = '${tftTier}'
+    WHERE placement = ${placement} AND tftSet = '${tftSet}' AND summonerTier = '${tftTier}'
     ORDER BY RANDOM()
     LIMIT ${limit};
     `

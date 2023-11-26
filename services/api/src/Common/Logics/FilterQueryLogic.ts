@@ -92,8 +92,8 @@ export class FilterQueryLogic {
       parameters.push(limit);
       parameterIndex++;
     }
-    console.log(query);
-    console.log(parameters);
     return { query, params: parameters };
   }
+
+
 }

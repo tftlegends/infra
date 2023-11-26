@@ -27,6 +27,9 @@ Resources:
                 - lambda.amazonaws.com
             Action:
               - sts:AssumeRole
+        Environment:
+          Variables:
+            SQS_QUEUE_URL: !Sub 'https://sqs.${AWS::Region}.amazonaws.com/${AWS::AccountId}/bot-message-processing-queue'
       Policies:
         - PolicyName: TftLegendsAPILambdaPolicy
           PolicyDocument:
@@ -45,6 +48,15 @@ Resources:
                   - logs:CreateLogStream
                   - logs:PutLogEvents
                 Resource: "*"
+              - Effect: Allow
+                Action:
+                  - sqs:DeleteMessage
+                  - sqs:GetQueueAttributes
+                  - sqs:ChangeMessageVisibility
+                  - sqs:SendMessage
+                Resource:
+                  - !Sub 'arn:aws:sqs:${AWS::Region}:${AWS::AccountId}:bot-message-processing-queue'
+
 
   TftLegendsAPIHandler:
     Type: AWS::Serverless::Function

@@ -32,4 +32,5 @@ export class MetaChampionsController {
         return this.metaChampionsService.listWorstChampions(stats);
     }
 
+
 }
