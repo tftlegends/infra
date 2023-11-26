@@ -59,11 +59,6 @@ export class FilterQueryLogic {
       parameters.push(trait.traitName);
       parameterIndex++;
 
-      if (trait.traitTier !== undefined) {
-        whereConditions.push(`tct_${parameterIndex - 1}.traitTier = $${parameterIndex}`);
-        parameters.push(trait.traitTier);
-        parameterIndex++;
-      }
     }
 
     // Handle augments

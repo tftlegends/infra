@@ -19,7 +19,8 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "deploy:e2e": "sam validate && npm run build && sam build && sam deploy --capabilities CAPABILITY_NAMED_IAM --no-confirm-changeset --no-fail-on-empty-changeset",
-    "deploy:ci": "sam validate && sam build && sam deploy --capabilities CAPABILITY_NAMED_IAM --no-confirm-changeset --no-fail-on-empty-changeset"
+    "deploy:ci": "sam validate && sam build && sam deploy --capabilities CAPABILITY_NAMED_IAM --no-confirm-changeset --no-fail-on-empty-changeset",
+    "misc": "npx ts-node -r tsconfig-paths/register src/Misc/ConvertToNameList.ts"
   },
   "dependencies": {
     "@aws-sdk/client-sqs": "^3.454.0",
