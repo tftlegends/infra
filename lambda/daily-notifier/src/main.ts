@@ -4,6 +4,7 @@ import { Context, Handler } from 'aws-lambda';
 import { SERVICE_NAME } from "@/domain/constants/aws";
 import { Dimensions } from "@/domain/enums/dimensions";
 import { MessageLogics } from "@/logics/messageLogics";
+import { BotNames } from "@/domain/constants/botNames";
 
 const cloudWatchClient = new CloudWatchClient();
 
@@ -25,6 +26,7 @@ export const handler: Handler = async (event: unknown, context: unknown, callbac
 
     const messageBody = {
       message: message,
+      botName: BotNames.NOTIFICATION
     };
 
     const command = new SendMessageCommand({

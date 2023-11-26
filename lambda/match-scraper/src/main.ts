@@ -286,13 +286,14 @@ export const handler = async (event: SQSEvent | object,context: object) => {
                 };
                 await tftCompositionAugmentsRepository.insertAugment(augmentEntity, transaction);
                 }));
+            await transaction.query("COMMIT");
+            const transactionEndTime = performance.now();
+            const transactionDuration = transactionEndTime - transactionStartTime;
+            await cloudWatch.sendDurationMetric(Metrics.TRANSACTION_DURATIONS,transactionDuration);
+            await cloudWatch.sendCountMetric(Metrics.SUCCESSFUL_TRANSACTIONS);
+            console.info("Added match " + matchId);
           }
-          await transaction.query("COMMIT");
-          const transactionEndTime = performance.now();
-          const transactionDuration = transactionEndTime - transactionStartTime;
-          await cloudWatch.sendDurationMetric(Metrics.TRANSACTION_DURATIONS,transactionDuration);
-          await cloudWatch.sendCountMetric(Metrics.SUCCESSFUL_TRANSACTIONS);
-          console.info("Added match " + matchId);
+
         }
       catch (error) {
         console.error(error);

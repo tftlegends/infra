@@ -8,7 +8,7 @@ const event : SQSEvent = {
     {
       "messageId": "unique-message-id-1234",
       "receiptHandle": "receipt-handle-abc-123",
-      "body": "{\"message\": \"Hello World\"}",
+      "body": "{\"message\": \"Hello World\", \"botName\": \"notification\" }",
       "attributes": {
         "ApproximateReceiveCount": "1",
         "SentTimestamp": "1588360698852",
