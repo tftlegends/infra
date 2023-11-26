@@ -25,7 +25,7 @@ Resources:
                 - sqs:ChangeMessageVisibility
               Resource:
                 - !Sub 'arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/COMMON*'
-                - !Sub 'arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/TFTLEGENDS_BOT_MESSAGE_HANDLER*'
+                - !Sub 'arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter/TFTLEGENDS_BOT*'
                 - !Sub 'arn:aws:sqs:${AWS::Region}:${AWS::AccountId}:bot-message-processing-queue'
 
   BotMessageHandlerTrigger:
