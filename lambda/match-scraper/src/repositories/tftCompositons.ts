@@ -15,7 +15,7 @@ export default class TftCompositonsRepository extends Repository {
     const client = transaction || await this.pool.getClient();
     const compositionString = JSON.stringify(composition.composition);
 
-    const query = `INSERT INTO TftCompositions(summonerPuuid, matchId, composition, compVector, playerLevel, placement, totalDamageToPlayers, tftSet, summonerTier) VALUES('${composition.summonerpuuid}', '${composition.matchid}', '${compositionString}', '[${composition.compvector}]', ${composition.playerlevel}, ${composition.placement}, ${composition.totaldamagetoplayers}, '${composition.tftset}', '${composition.summonertier}') RETURNING * `
+    const query = `INSERT INTO TftCompositions(summonerPuuid, matchId, composition, traitsVector,championsVector, playerLevel, placement, totalDamageToPlayers, tftSet, summonerTier) VALUES('${composition.summonerpuuid}', '${composition.matchid}', '${compositionString}', '[${composition.traitsVector}]', '[${composition.championsVector}]', ${composition.playerlevel}, ${composition.placement}, ${composition.totaldamagetoplayers}, '${composition.tftset}', '${composition.summonertier}') RETURNING * `
     await client.query(query);
     if (!transaction) client.release();
     return composition;

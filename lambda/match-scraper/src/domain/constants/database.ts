@@ -1,3 +1,6 @@
 
 
-export const COMPOSITION_VECTOR_LENGTH = 64;
+export const TRAITS_VECTOR_LENGTH = 64;
+export const AUGMENTS_VECTOR_LENGTH = 1024;
+export const ITEMS_VECTOR_LENGTH = 512;
+export const CHAMPIONS_VECTOR_LENGTH = 128;

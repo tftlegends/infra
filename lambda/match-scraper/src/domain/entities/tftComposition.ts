@@ -27,7 +27,8 @@ export default interface TftCompositionEntity {
   summonerpuuid: string;
   matchid: string;
   composition: object;
-  compvector: number[];
+  traitsVector: number[];
+  championsVector: number[];
   playerlevel: number;
   placement: number;
   totaldamagetoplayers: number;
