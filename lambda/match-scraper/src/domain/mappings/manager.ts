@@ -1,3 +1,4 @@
+import {StringDistanceLogic} from "@/common/stringDistanceLogic";
 
 export class MappingManager {
   protected version: string;
@@ -63,6 +64,15 @@ export class MappingManager {
       throw new Error(this.errorMessage);
     }
     return Object.keys(this.nameMapping).length;
+  }
+
+  convertNearestStringToIndex(input: string): number {
+    const nearest = StringDistanceLogic.getNearestFromList(input, Object.keys(this.indexMapping!));
+    return this.convertStringToIndex(nearest);
+  }
+  convertNearestStringToName(input: string): string {
+    const nearest = StringDistanceLogic.getNearestFromList(input, Object.keys(this.nameMapping!));
+    return this.convertStringToName(nearest);
   }
 }
 
