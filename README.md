@@ -10,7 +10,7 @@ TFT Legends is an advanced chatbot tool for Teamfight Tactics players, available
 
 ## Installation
 Get TFT Legends from the ChatGPT Store:
-[ChatGPT Store - TFT Legends](https://chat.openai.com/g/g-9dABtRYhg-blitzcore)
+[ChatGPT Store - TFT Legends](https://chat.openai.com/g/g-9dABtRYhg-tftlegends)
 
 ## Usage
 - Launch the chatbot from the ChatGPT Store.
