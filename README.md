@@ -3,6 +3,26 @@
 ## Overview
 TFT Legends is an advanced chatbot tool for Teamfight Tactics players, available on the ChatGPT Store. It delivers strategic composition suggestions to enhance gameplay.
 
+## System Architecture
+
+### Data Storage and Management
+- **Vector Database**: Uses pgvector and PostgreSQL, hosted on AWS RDS.
+
+### Bot Message Handler
+- **Deployment**: AWS Lambda with SQS queue integration.
+- **Function**: Connects with a Telegram bot for DevOps events and daily match scraping reports.
+
+### Match Scraper
+- **Operation**: Triggered every 15 minutes, adding about 2000 TFT matches daily.
+- **Trigger Mechanism**: CloudWatch events or event queue with a username.
+
+### API Server
+- **Integration**: Connected with Vector DB.
+- **Function**: Provides essential data to the chatbot.
+
+### Daily Notifier
+- **Function**: Generates daily reports on match additions to DB and other analytics like average match insertion time.
+
 ## Features
 - **Real-Time Suggestions**: Offers composition advice based on current game state.
 - **Data-Driven Insights**: Utilizes latest meta and statistical analysis.
@@ -10,7 +30,7 @@ TFT Legends is an advanced chatbot tool for Teamfight Tactics players, available
 
 ## Installation
 Get TFT Legends from the ChatGPT Store:
-[ChatGPT Store - TFT Legends](https://chat.openai.com/g/g-9dABtRYhg-tftlegends)
+[ChatGPT Store - TFT Legends](https://chat.openai.com/g/g-9dABtRYhg-blitzcore)
 
 ## Usage
 - Launch the chatbot from the ChatGPT Store.
