@@ -7,7 +7,7 @@ TFT Legends is an advanced chatbot tool for Teamfight Tactics players, available
 
 ### Overview
 
-![image](https://github.com/tftlegends/infra/assets/75265893/bcd5422b-1943-4881-8a97-43ee082f15b5)
+![image](https://github.com/tftlegends/infra/assets/75265893/df740c3c-dd46-454d-bf95-e7bd830c4892)
 
 
 ### Data Storage and Management
