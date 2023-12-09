@@ -7,7 +7,8 @@ TFT Legends is an advanced chatbot tool for Teamfight Tactics players, available
 
 ### Overview
 
-![image](https://github.com/tftlegends/infra/assets/75265893/6c37b5db-cf4a-4f86-94fa-1dcb64b55b0b)
+![image](https://github.com/tftlegends/infra/assets/75265893/bcd5422b-1943-4881-8a97-43ee082f15b5)
+
 
 ### Data Storage and Management
 - **Vector Database**: Uses pgvector and PostgreSQL, hosted on AWS RDS.
